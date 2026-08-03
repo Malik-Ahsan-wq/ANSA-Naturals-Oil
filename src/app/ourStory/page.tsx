@@ -114,7 +114,7 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
-              <div key={i} className="bg-white p-8 rounded-3xl border border-emerald-900/8 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
+              <div key={i} className="bg-white p-8 rounded-3xl border border-emerald-900/8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                 <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#1f5c3d] group-hover:to-[#2e7d57] group-hover:text-white transition-all">
                   {v.icon}
                 </div>
@@ -130,7 +130,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-4 py-20">
         <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#1f5c3d] via-[#2e7d57] to-[#123e29] p-10 sm:p-16 text-center shadow-2xl">
           <Leaf variant="a" className="absolute -left-4 -bottom-4 w-28 h-28 text-emerald-200/10 rotate-12" />
-          <OilDrop className="absolute right-12 top-6 w-8 h-10 text-amber-300/20 animate-float" />
+          <OilDrop className="absolute right-12 top-6 w-8 h-10 text-amber-300/20" />
           <div className="relative">
             <FaHeart className="text-[#e6c277] mx-auto mb-4 text-xl" />
             <h2 className="text-3xl sm:text-5xl font-bold text-white">Ready to Feel the Difference?</h2>

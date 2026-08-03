@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 
 export default function AOSInit() {
   useEffect(() => {
-    AOS.init({ duration: 600, easing: "ease-out-cubic", once: true });
+    AOS.init({ duration: 400, easing: "ease-out", once: true, offset: 50 });
   }, []);
   return null;
 }

@@ -38,7 +38,7 @@ h1, h2, h3, h4, .font-display {
 
 /* ---------- Keyframes ---------- */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
@@ -46,20 +46,20 @@ h1, h2, h3, h4, .font-display {
   to   { opacity: 1; }
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%      { transform: translateY(-14px) rotate(3deg); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
 }
 @keyframes drift {
   0%, 100% { transform: translateY(0) translateX(0); opacity: 0.7; }
-  50%      { transform: translateY(-16px) translateX(4px); opacity: 1; }
+  50%      { transform: translateY(-8px) translateX(2px); opacity: 1; }
 }
 @keyframes shimmer {
   0%   { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 @keyframes blob {
-  0%, 100% { border-radius: 60% 40% 55% 45% / 60% 45% 60% 40%; }
-  50%      { border-radius: 40% 60% 45% 55% / 45% 60% 40% 55%; }
+  0%, 100% { border-radius: 60% 40% 55% 45%; }
+  50%      { border-radius: 40% 60% 45% 55%; }
 }
 @keyframes spinSlow {
   from { transform: rotate(0deg); }
@@ -70,35 +70,36 @@ h1, h2, h3, h4, .font-display {
   to   { transform: translateX(-50%); }
 }
 @keyframes popIn {
-  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 /* ---------- Utility classes ---------- */
-.animate-fadeInUp { animation: fadeInUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
-.animate-fadeIn   { animation: fadeIn 0.8s ease both; }
-.animate-float    { animation: float 5s ease-in-out infinite; }
-.animate-float-delay  { animation: float 6s ease-in-out 1.2s infinite; }
-.animate-float-slow   { animation: float 7s ease-in-out 0.5s infinite; }
-.animate-drift    { animation: drift 4s ease-in-out infinite; }
-.animate-drift-delay  { animation: drift 5s ease-in-out 1.5s infinite; }
-.animate-blob     { animation: blob 12s ease-in-out infinite; }
-.animate-spin-slow    { animation: spinSlow 28s linear infinite; }
-.animate-pop     { animation: popIn 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fadeInUp { animation: fadeInUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fadeIn   { animation: fadeIn 0.5s ease both; }
+.animate-float    { animation: float 6s ease-in-out infinite; will-change: transform; }
+.animate-float-delay  { animation: float 7s ease-in-out 1s infinite; will-change: transform; }
+.animate-float-slow   { animation: float 8s ease-in-out 0.5s infinite; will-change: transform; }
+.animate-drift    { animation: drift 5s ease-in-out infinite; will-change: transform, opacity; }
+.animate-drift-delay  { animation: drift 6s ease-in-out 1s infinite; will-change: transform, opacity; }
+.animate-blob     { animation: blob 16s ease-in-out infinite; will-change: border-radius; }
+.animate-spin-slow    { animation: spinSlow 32s linear infinite; will-change: transform; }
+.animate-pop     { animation: popIn 0.4s cubic-bezier(0.16,1,0.3,1) both; }
 
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 28s linear infinite;
+  animation: marquee 32s linear infinite;
+  will-change: transform;
 }
 
 .text-shimmer {
-  background: linear-gradient(90deg, #1f5c3d 0%, #2e7d57 25%, #c08a2e 50%, #2e7d57 75%, #1f5c3d 100%);
+  background: linear-gradient(90deg, #1f5c3d 0%, #2e7d57 30%, #c08a2e 50%, #2e7d57 70%, #1f5c3d 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
+  animation: shimmer 8s linear infinite;
 }
 
 .glass-light {

@@ -7,7 +7,7 @@ export const brand = {
     "ANSA Naturals crafts 100% pure, cold-pressed natural hair oil from hand-selected Nigella sativa seeds — bottled in small batches to nourish stronger, shinier, healthier-looking hair with nature's most powerful nutrients.",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "923276227156",
   phone: "+92 327 6227156",
-  email: "care@ansanaturals.com",
+  email: "ahsanmalikking57@gmail.com",
   address: "ANSA Naturals, Lahore, Pakistan",
   currency: "Rs",
   social: {
