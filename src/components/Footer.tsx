@@ -2,10 +2,40 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { FaInstagram, FaFacebook, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaLeaf, FaTiktok } from "react-icons/fa";
 import { brand, whatsappLink } from "@/data/brand";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [state, setState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setState("submitting");
+    setMessage("");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setState("success");
+        setEmail("");
+        setMessage("Welcome to the circle! Check your inbox for a confirmation.");
+      } else {
+        setState("error");
+        setMessage(data.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setState("error");
+      setMessage("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <footer className="relative bg-[#0c2b1d] text-emerald-100/70 pt-16 pb-8 overflow-hidden">
       <div className="absolute -top-20 -right-20 w-72 h-72 bg-emerald-600/10 rounded-full blur-3xl" />
@@ -21,8 +51,8 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
-              Pure, cold-pressed black seed oil crafted with care — nature&apos;s most
-              potent wellness oil, bottled to perfection.
+              Pure, cold-pressed natural hair oil crafted with care — nature&apos;s most
+              potent elixir for stronger, shinier, healthier-looking hair.
             </p>
             <div className="flex items-center gap-3">
               {[
@@ -83,17 +113,29 @@ export default function Footer() {
           {/* Newsletter / CTA */}
           <div>
             <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Stay Nourished</h4>
-            <p className="text-sm mb-4">Join our wellness circle for exclusive offers and natural care tips.</p>
-            <form className="flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
+            <p className="text-sm mb-4">Join our hair-care circle for exclusive offers and natural hair-nourishing tips.</p>
+            <form className="flex flex-col gap-3" onSubmit={handleSubscribe}>
               <input
                 type="email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
                 className="rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-emerald-100/40 outline-none focus:ring-2 focus:ring-[#c08a2e] transition-all"
               />
-              <button className="rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white py-3 text-sm font-bold hover:shadow-lg hover:shadow-emerald-900/40 transition-all active:scale-[0.98]">
-                Subscribe
+              <button
+                type="submit"
+                disabled={state === "submitting"}
+                className="rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white py-3 text-sm font-bold hover:shadow-lg hover:shadow-emerald-900/40 transition-all active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
+              >
+                {state === "submitting" ? "Subscribing…" : "Subscribe"}
               </button>
+              {state === "success" && (
+                <p className="text-xs font-semibold text-emerald-300">{message}</p>
+              )}
+              {state === "error" && (
+                <p className="text-xs font-semibold text-red-300">{message}</p>
+              )}
             </form>
           </div>
         </div>

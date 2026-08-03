@@ -3,11 +3,15 @@ import path from 'path';
 
 const DATA_FILE = path.join(process.cwd(), 'src', 'data', 'orders.json');
 
+export const ORDER_STATUSES = ["Pending", "Confirmed", "Completed", "Cancelled"] as const;
+
 export interface OrderData {
   _id: string;
   customerName: string;
+  email: string;
   address: string;
   phone: string;
+  note?: string;
   totalAmount: number;
   status: string;
   paymentMethod: string;
@@ -62,4 +66,18 @@ export async function saveOrder(order: Omit<OrderData, '_id' | 'createdAt' | 'up
   orders.unshift(newOrder);
   await fs.writeFile(DATA_FILE, JSON.stringify(orders, null, 2));
   return newOrder;
+}
+
+export async function updateOrderStatus(id: string, status: string): Promise<OrderData | null> {
+  if (!ORDER_STATUSES.includes(status as (typeof ORDER_STATUSES)[number])) {
+    throw new Error(`Invalid order status: ${status}`);
+  }
+  const orders = await getOrders();
+  const order = orders.find((o) => o._id === id);
+  if (!order) return null;
+
+  order.status = status;
+  order.updatedAt = new Date().toISOString();
+  await fs.writeFile(DATA_FILE, JSON.stringify(orders, null, 2));
+  return order;
 }

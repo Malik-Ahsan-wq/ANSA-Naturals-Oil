@@ -17,14 +17,14 @@ export type Product = {
 export const products: Product[] = [
   {
     id: "oil-01",
-    name: "Pure Cold-Pressed Black Seed Oil",
+    name: "Pure Cold-Pressed Black Seed Hair Oil",
     slug: "pure-black-seed-oil",
     price: 2450,
     originalPrice: 3400,
     image: "/assets/ansa-logo.png",
     description:
-      "The flagship of ANSA Naturals — 100% pure, organic, first-press cold-extracted black seed oil. Hand-harvested Nigella sativa seeds, cold-pressed within 24 hours, and bottled in UV-protected glass to lock in thymoquinone, omega fatty acids and vitamin E.",
-    category: "Natural Wellness Oil",
+      "The flagship of ANSA Naturals — 100% pure, organic, first-press cold-extracted black seed hair oil. Hand-harvested Nigella sativa seeds, cold-pressed within 24 hours, and bottled in UV-protected glass to lock in thymoquinone, omega fatty acids and vitamin E for visibly stronger, shinier, more resilient hair.",
+    category: "Premium Natural Hair Oil",
     isVeg: true,
     available: true,
     sizes: "100 ml · Glass Dropper Bottle",

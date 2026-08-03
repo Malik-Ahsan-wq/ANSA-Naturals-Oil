@@ -23,8 +23,8 @@ const values = [
   },
   {
     icon: <FaHandHoldingHeart className="text-[#1f5c3d]" size={24} />,
-    title: "Wellness First",
-    description: "People, not profits. Your health and trust are the heart of everything we do."
+    title: "Hair-Care First",
+    description: "People, not profits. Your hair's health and your trust are the heart of everything we do."
   }
 ];
 
@@ -45,7 +45,7 @@ export default function AboutPage() {
           </h1>
           <p className="mt-6 text-lg text-zinc-600 max-w-2xl mx-auto leading-relaxed">
             A journey rooted in nature&apos;s most time-honoured remedy, perfected by modern
-            science to bring pure, potent wellness to every home.
+            science to bring pure, potent hair nutrition to every home.
           </p>
           <div className="mt-8 flex justify-center">
             <Image src={brand.logo} alt={`${brand.name} logo`} width={0} height={0} sizes="320px" className="h-20 md:h-24 w-auto opacity-80" />

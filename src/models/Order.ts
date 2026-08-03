@@ -2,8 +2,10 @@ import mongoose, { Schema, Document, Model } from "mongoose";
 
 export interface IOrder extends Document {
   customerName: string;
+  email: string;
   address: string;
   phone: string;
+  note?: string;
   totalAmount: number;
   status: string;
   paymentMethod: string;
@@ -19,10 +21,12 @@ export interface IOrder extends Document {
 const OrderSchema = new Schema<IOrder>(
   {
     customerName: { type: String, required: true },
+    email: { type: String, required: true },
     address: { type: String, required: true },
     phone: { type: String, required: true },
+    note: { type: String },
     totalAmount: { type: Number, required: true },
-    status: { type: String, default: "Pending", enum: ["Pending", "Completed", "Cancelled"] },
+    status: { type: String, default: "Pending", enum: ["Pending", "Confirmed", "Completed", "Cancelled"] },
     paymentMethod: { type: String, default: "Cash on Delivery" },
     items: [
       {

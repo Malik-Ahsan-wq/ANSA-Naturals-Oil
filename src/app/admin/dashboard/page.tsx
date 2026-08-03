@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { OrderData } from "@/lib/orderStorage";
-import { FaTrash, FaPhoneAlt, FaMapMarkerAlt, FaBoxOpen } from "react-icons/fa";
+import { OrderData, ORDER_STATUSES } from "@/lib/orderStorage";
+import { FaTrash, FaPhoneAlt, FaMapMarkerAlt, FaBoxOpen, FaEnvelope } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 export default function AdminDashboard() {
@@ -81,8 +81,51 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleStatusChange = async (id: string, status: string) => {
+    const confirm = status === "Confirmed" || status === "Completed";
+    if (confirm) {
+      const result = await Swal.fire({
+        title: "Confirm order?",
+        text: `Moving to "${status}" will send the customer a confirmation email.`,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#1f5c3d",
+        cancelButtonColor: "#71717a",
+        confirmButtonText: "Yes, confirm",
+        cancelButtonText: "Cancel",
+      });
+      if (!result.isConfirmed) return;
+    }
+
+    try {
+      const res = await fetch("/api/orders", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, status }),
+      });
+      const data = await res.json();
+      if (!data.success) {
+        Swal.fire("Error", data.error || "Failed to update status", "error");
+        return;
+      }
+      setOrders((prev) => prev.map((o) => (o._id === id ? { ...o, status } : o)));
+      const label = status === "Confirmed" ? "Order confirmed" : `Status set to ${status}`;
+      Swal({
+        toast: true,
+        position: "top-end",
+        icon: "success",
+        title: data.emailSent ? `${label} · email sent` : label,
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    } catch {
+      Swal.fire("Error", "Network error. Please try again.", "error");
+    }
+  };
+
   const statusColor = (s: string) =>
     s === "Completed" ? "bg-green-100 text-green-700" :
+    s === "Confirmed" ? "bg-blue-100 text-blue-700" :
     s === "Cancelled" ? "bg-red-100 text-red-700" :
     "bg-amber-100 text-amber-700";
 
@@ -112,7 +155,7 @@ export default function AdminDashboard() {
 
           {/* FILTER TABS */}
           <div className="flex gap-1 bg-white p-1 rounded-xl border border-zinc-200 shadow-sm w-fit">
-            {["All", "Pending", "Completed", "Cancelled"].map((s) => (
+            {["All", ...ORDER_STATUSES].map((s) => (
               <button
                 key={s}
                 onClick={() => setFilter(s)}
@@ -166,6 +209,10 @@ export default function AdminDashboard() {
                   <p className="flex items-center gap-2 text-sm text-zinc-500">
                     <FaPhoneAlt className="text-orange-400 text-xs flex-shrink-0" /> {order.phone}
                   </p>
+                  <p className="flex items-center gap-2 text-sm text-zinc-500">
+                    <FaEnvelope className="text-orange-400 text-xs flex-shrink-0" />
+                    <span className="truncate">{order.email || "—"}</span>
+                  </p>
                   <p className="flex items-start gap-2 text-sm text-zinc-500">
                     <FaMapMarkerAlt className="text-orange-400 text-xs flex-shrink-0 mt-0.5" />
                     <span className="line-clamp-2">{order.address}</span>
@@ -189,14 +236,25 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* FOOTER */}
-                <div className="px-5 pb-5 flex items-center justify-between border-t border-zinc-100 pt-3">
-                  <span className="text-xs font-medium text-zinc-400 bg-zinc-100 px-2.5 py-1 rounded-full">
-                    {order.paymentMethod}
-                  </span>
+                <div className="px-5 pb-5 border-t border-zinc-100 pt-3 flex flex-col gap-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-zinc-400 bg-zinc-100 px-2.5 py-1 rounded-full">
+                      {order.paymentMethod}
+                    </span>
+                    <select
+                      value={order.status}
+                      onChange={(e) => handleStatusChange(order._id as unknown as string, e.target.value)}
+                      className="text-xs font-bold rounded-lg border border-zinc-200 px-2 py-1.5 bg-white text-zinc-700 outline-none focus:ring-2 focus:ring-zinc-900 cursor-pointer"
+                    >
+                      {ORDER_STATUSES.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
                   <button
                     onClick={() => handleDelete(order._id as unknown as string, order.customerName)}
                     disabled={deletingId === order._id}
-                    className="flex items-center gap-1.5 bg-red-50 hover:bg-red-600 text-red-500 hover:text-white border border-red-100 hover:border-red-600 px-3 py-1.5 rounded-lg text-xs font-bold transition-all active:scale-95"
+                    className="w-full flex items-center justify-center gap-1.5 bg-red-50 hover:bg-red-600 text-red-500 hover:text-white border border-red-100 hover:border-red-600 px-3 py-2 rounded-lg text-xs font-bold transition-all active:scale-95"
                   >
                     <FaTrash size={10} />
                     Delete

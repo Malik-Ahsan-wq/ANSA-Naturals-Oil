@@ -1,21 +1,23 @@
 [
   {
     "customerName": "Haroon ahmed",
+    "email": "ahsanmaliking57@gmail.com",
     "address": "F6HX+84G",
     "phone": "03276227156",
+    "note": "",
+    "totalAmount": 2450,
+    "paymentMethod": "Cash on Delivery",
     "items": [
       {
-        "productId": "m2",
-        "productName": "Beef Karahi",
+        "productId": "oil-01",
+        "productName": "Pure Cold-Pressed Black Seed Hair Oil",
         "quantity": 1,
-        "price": 1299
+        "price": 2450
       }
     ],
-    "totalAmount": 1299,
-    "paymentMethod": "Cash on Delivery",
-    "_id": "ffm0f5720fsjqh1gyusun",
-    "createdAt": "2026-06-27T05:20:13.883Z",
-    "updatedAt": "2026-06-27T05:20:13.883Z",
+    "_id": "h8l2abfx27aedvwctfvpt",
+    "createdAt": "2026-08-03T11:40:10.726Z",
+    "updatedAt": "2026-08-03T11:40:10.726Z",
     "status": "Pending"
   }
 ]

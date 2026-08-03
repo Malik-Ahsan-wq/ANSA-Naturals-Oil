@@ -1,10 +1,10 @@
 export const brand = {
   name: "ANSA Naturals",
   shortName: "ANSA",
-  tagline: "Pure Cold-Pressed Black Seed Oil",
+  tagline: "Pure Cold-Pressed Natural Hair Oil",
   logo: "/assets/ansa-logo.png",
   description:
-    "ANSA Naturals crafts 100% pure, cold-pressed black seed oil from hand-selected Nigella sativa seeds — bottled in small batches to preserve nature's most powerful nutrients.",
+    "ANSA Naturals crafts 100% pure, cold-pressed natural hair oil from hand-selected Nigella sativa seeds — bottled in small batches to nourish stronger, shinier, healthier-looking hair with nature's most powerful nutrients.",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "923276227156",
   phone: "+92 327 6227156",
   email: "care@ansanaturals.com",

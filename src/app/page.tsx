@@ -74,13 +74,13 @@ function Hero() {
 
           <h1 className="text-4xl sm:text-6xl lg:text-[4.2rem] font-bold leading-[1.05] text-[#0f3524]" data-aos="fade-up" data-aos-delay="100">
             Nature&apos;s Most Potent{" "}
-            <span className="text-shimmer italic">Healing Oil</span>
+            <span className="text-shimmer italic">Hair Oil</span>
           </h1>
 
           <p className="mt-5 text-base sm:text-lg text-zinc-600 leading-relaxed max-w-xl mx-auto lg:mx-0" data-aos="fade-up" data-aos-delay="200">
             Hand-harvested black seed, cold-pressed within 24 hours and bottled in
-            UV-protected glass — {brand.tagline.toLowerCase()} preserves the nutrients
-            most oils lose in heat processing.
+            UV-protected glass — {brand.tagline.toLowerCase()} nourishes roots and
+            revives shine without heat damage or harsh chemicals.
           </p>
 
           {/* Rating + price */}
@@ -119,8 +119,7 @@ function Hero() {
 
           <p className="mt-4 text-xs text-zinc-400 flex items-center justify-center lg:justify-start gap-1.5" data-aos="fade-up" data-aos-delay="450">
             <FaTruck className="text-emerald-600" /> Free nationwide delivery on every order · Ships within 24 hours
-          </p>
-        </div>
+          </p>        </div>
 
         {/* Right — product */}
         <div className="relative flex justify-center lg:justify-end" data-aos="zoom-in" data-aos-delay="200">
@@ -217,13 +216,13 @@ function About() {
         <div className="order-1 lg:order-2">
           <p className="section-eyebrow flex items-center gap-2 mb-3"><span className="h-px w-8 bg-gold inline-block" />The Essence of Nature</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#14241b]" data-aos="fade-up">
-            One Oil. A Thousand Years of <span className="text-shimmer">Natural Wisdom.</span>
+            One Oil. A Thousand Years of <span className="text-shimmer">Natural Hair Wisdom.</span>
           </h2>
           <p className="mt-5 text-zinc-600 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-            For centuries, black seed — the &quot;blessed seed&quot; of traditional wellness — has been
-            treasured across civilisations for its remarkable nourishment. At ANSA Naturals, we
-            honour that heritage with modern precision: every bottle is a commitment to purity,
-            potency and ethical sourcing.
+            For centuries, black seed — the &quot;blessed seed&quot; of traditional beauty — has been
+            treasured across civilisations for its remarkable ability to nourish hair and scalp.
+            At ANSA Naturals, we honour that heritage with modern precision: every bottle is a
+            commitment to purity, potency and ethical sourcing.
           </p>
           <ul className="mt-7 space-y-3.5" data-aos="fade-up" data-aos-delay="200">
             {points.map((p) => (
@@ -250,12 +249,12 @@ function About() {
 /* ------------------------------- BENEFITS -------------------------------- */
 function Benefits() {
   const benefits = [
-    { icon: FaLeaf, title: "Hair & Scalp", desc: "Helps strengthen roots, reduce breakage and restore natural shine for thicker-looking hair." },
-    { icon: FaHandHoldingHeart, title: "Skin Glow", desc: "Rich in essential fatty acids that help calm skin, fade dullness and support a radiant complexion." },
-    { icon: FaShieldAlt, title: "Immunity", desc: "Thymoquinone supports the body's natural defences, helping you feel balanced and protected." },
-    { icon: FaFlask, title: "Digestion", desc: "Traditionally used to soothe digestion and support gut comfort when taken as recommended." },
-    { icon: FaSeedling, title: "Energy & Focus", desc: "A daily ritual that helps you feel grounded, energised and mentally clear from morning to night." },
-    { icon: FaRecycle, title: "Healthy Aging", desc: "Antioxidant-rich formula supports skin elasticity and a youthful, dewy appearance." },
+    { icon: FaLeaf, title: "Hair Growth", desc: "Massaging into the scalp helps stimulate roots and supports thicker, fuller-looking hair over time." },
+    { icon: FaHandHoldingHeart, title: "Root Strength", desc: "Rich in essential fatty acids that help reduce breakage, split ends and unwanted shedding." },
+    { icon: FaShieldAlt, title: "Scalp Balance", desc: "Naturally soothing and clarifying, it helps calm a flaky, irritated scalp and unclog follicles." },
+    { icon: FaFlask, title: "Glossy Shine", desc: "Seals the cuticle and restores mirror-like shine, softness and movement to dull strands." },
+    { icon: FaSeedling, title: "Dandruff Care", desc: "Traditionally used to reduce flakiness, itching and dryness for a healthy, comfortable scalp." },
+    { icon: FaRecycle, title: "Youthful Hair", desc: "Antioxidant-rich formula helps protect against heat, pollution and everyday styling damage." },
   ];
   return (
     <section id="benefits" className="relative py-20 lg:py-28 bg-white">
@@ -263,8 +262,8 @@ function Benefits() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="The Benefits"
-          title={<>One Oil, <span className="text-shimmer">Endless Vitality</span></>}
-          sub="Nature's most concentrated wellness oil, packed into every single golden drop."
+          title={<>One Oil, <span className="text-shimmer">Endless Hair Vitality</span></>}
+          sub="Nature's most concentrated hair oil, packed into every single golden drop."
         />
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {benefits.map((b, i) => (
@@ -290,8 +289,8 @@ function Benefits() {
 function Ingredients() {
   const rows = [
     { name: "Nigella sativa Seeds", note: "Premium Kalonji, pesticide-free", pct: "100" },
-    { name: "Thymoquinone", note: "The active compound for wellness", pct: "80" },
-    { name: "Omega 3, 6, 9", note: "Essential fatty acids", pct: "84" },
+    { name: "Thymoquinone", note: "The active compound for hair health", pct: "80" },
+    { name: "Omega 3, 6, 9", note: "Essential fatty acids for the scalp", pct: "84" },
     { name: "Vitamin E & B-Complex", note: "Natural antioxidant support", pct: "70" },
     { name: "Cold-Pressed Purity", note: "Nothing added, nothing removed", pct: "100" },
   ];
@@ -348,17 +347,17 @@ function Ingredients() {
 /* -------------------------------- HOW TO USE ----------------------------- */
 function HowToUse() {
   const steps = [
-    { n: "01", t: "Take Daily", d: "1 tsp (5 ml) on an empty stomach each morning, or add to warm water with honey." },
-    { n: "02", t: "Apply Topically", d: "Massage a few drops into hair, scalp or skin as part of your nightly ritual." },
-    { n: "03", t: "Stay Consistent", d: "For best results, use daily for 8–12 weeks. Consistency is the key to transformation." },
+    { n: "01", t: "Massage the Scalp", d: "Warm a few drops and gently massage into the scalp with fingertips for 3–5 minutes to awaken follicles." },
+    { n: "02", t: "Work Through Strands", d: "Spread from roots to ends, focusing on dry, damaged areas. Leave in for 30 minutes to overnight." },
+    { n: "03", t: "Stay Consistent", d: "Rinse with a gentle shampoo. For best results, use 3–4 times a week for 8–12 weeks." },
   ];
   return (
     <section className="relative py-20 lg:py-28 bg-[#fbf8f1]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="How to Use"
-          title={<>Your Daily <span className="text-shimmer">Ritual of Wellness</span></>}
-          sub="Simple, three steps to integrate nature's most potent oil into your life."
+          title={<>Your Daily <span className="text-shimmer">Hair Ritual</span></>}
+          sub="Simple, three steps to welcome nature's most potent oil into your hair-care routine."
         />
         <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
           {steps.map((s, i) => (
@@ -442,12 +441,12 @@ function WhyChooseUs() {
 /* -------------------------------- REVIEWS -------------------------------- */
 function Reviews() {
   const reviews = [
-    { name: "Ayesha Khan", city: "Lahore", stars: 5, title: "My hair has never felt stronger", text: "Three months in and my hair fall has reduced dramatically. The shine is unreal — I've finally found my holy grail oil." },
-    { name: "Daniyal R.", city: "Karachi", stars: 5, title: "Genuinely 100% pure", text: "You can tell the difference from the smell and texture alone. No carrier oil, no tricks. This is the real thing." },
-    { name: "Mariam S.", city: "Islamabad", stars: 5, title: "Part of my daily ritual", text: "A spoonful every morning and I feel more energised and my digestion has never been better. Beautiful packaging too." },
-    { name: "Sana & Co.", city: "Faisalabad", stars: 5, title: "Glow-up in a bottle", text: "My skin looks brighter and more even. The cold-pressed purity really shows. Ordering my second bottle now!" },
-    { name: "Hassan A.", city: "Multan", stars: 4, title: "Premium quality, quick delivery", text: "Arrived in two days, beautifully packed with a glass dropper. Quality feels premium. Would love a bigger size option." },
-    { name: "Fatima Z.", city: "Rawalpindi", stars: 5, title: "Trustworthy brand", text: "Love that every batch is lab tested and you can see the certificate. Rare to find this level of transparency." },
+    { name: "Ayesha Khan", city: "Lahore", stars: 5, title: "My hair has never felt stronger", text: "Three months in and my hair fall has reduced dramatically. The shine is unreal — I've finally found my holy grail hair oil." },
+    { name: "Daniyal R.", city: "Karachi", stars: 5, title: "Genuinely 100% pure", text: "You can tell the difference from the smell and texture alone. No carrier oil, no tricks. This is the real thing for my scalp." },
+    { name: "Mariam S.", city: "Islamabad", stars: 5, title: "Part of my weekly ritual", text: "A scalp massage with this every few nights and my hair looks fuller and silkier. Beautiful packaging too." },
+    { name: "Sana & Co.", city: "Faisalabad", stars: 5, title: "Glow-up in a bottle", text: "My dull, frizzy hair looks glossy and healthy again. The cold-pressed purity really shows. Ordering my second bottle now!" },
+    { name: "Hassan A.", city: "Multan", stars: 4, title: "Premium quality, quick delivery", text: "Arrived in two days, beautifully packed with a glass dropper. My dandruff has calmed down a lot. Quality feels premium." },
+    { name: "Fatima Z.", city: "Rawalpindi", stars: 5, title: "Trustworthy brand", text: "Love that every batch is lab tested and you can see the certificate. Rare to find this level of transparency in hair care." },
   ];
   return (
     <section id="reviews" className="relative py-20 lg:py-28 overflow-hidden bg-[#fbf8f1]">
@@ -456,7 +455,7 @@ function Reviews() {
         <SectionHeading
           eyebrow="Customer Reviews"
           title={<>Loved by <span className="text-shimmer">Thousands</span></>}
-          sub="Real results from real people who made ANSA part of their daily routine."
+          sub="Real results from real people who made ANSA part of their hair-care routine."
         />
         <div className="mt-6 flex justify-center gap-1 text-amber-500" data-aos="fade-up">
           {[...Array(5)].map((_, i) => <FaStar key={i} className="text-lg" />)}
@@ -495,11 +494,11 @@ function Reviews() {
 /* ---------------------------------- FAQ ----------------------------------- */
 function Faq() {
   const faqs = [
-    { q: "Is the oil really 100% pure and natural?", a: "Yes. ANSA Naturals is single-origin, cold-pressed black seed oil with absolutely no fillers, carrier oils, preservatives or heat processing. Every batch ships with a third-party lab purity certificate." },
-    { q: "How is cold-pressing different from regular extraction?", a: "Most oils are heat-extracted, which destroys delicate nutrients. We press seeds slowly below 40°C, preserving thymoquinone, omega fatty acids and vitamin E at their full potency." },
-    { q: "How should I take the oil and how much?", a: "For internal use, take 1 teaspoon (5 ml) on an empty stomach each morning, or mix with warm water and honey. For topical use, massage a few drops into hair, scalp or skin." },
-    { q: "Are there any side effects or allergies?", a: "Black seed oil is generally safe for most adults. If you are pregnant, nursing, on medication, or have known seed allergies, please consult your physician before use." },
-    { q: "How long does one bottle last and how do I store it?", a: "One 100 ml bottle lasts roughly 3–4 weeks with daily internal use. Store in a cool, dry place away from direct sunlight — the amber glass bottle is designed to protect the oil." },
+    { q: "Is the oil really 100% pure and natural?", a: "Yes. ANSA Naturals is single-origin, cold-pressed black seed hair oil with absolutely no fillers, carrier oils, preservatives or heat processing. Every batch ships with a third-party lab purity certificate." },
+    { q: "How is cold-pressing different from regular extraction?", a: "Most hair oils are heat-extracted or blended with cheap carriers, which destroys delicate nutrients. We press seeds slowly below 40°C, preserving thymoquinone, omega fatty acids and vitamin E at their full potency." },
+    { q: "How should I use it on my hair?", a: "Warm a few drops and massage into the scalp for 3–5 minutes, then work through strands from roots to ends. Leave in for 30 minutes to overnight, then rinse with a gentle shampoo. Repeat 3–4 times a week." },
+    { q: "Are there any side effects or allergies?", a: "Our oil is generally safe for most hair and skin types. If you have known seed allergies or a sensitive scalp, do a patch test before use and discontinue if irritation occurs." },
+    { q: "How long does one bottle last and how do I store it?", a: "One 100 ml bottle lasts roughly 6–8 weeks of regular hair use. Store in a cool, dry place away from direct sunlight — the amber glass bottle is designed to protect the oil." },
     { q: "What is your delivery and return policy?", a: "We offer free nationwide delivery with dispatch within 24 hours. If you're not completely satisfied, contact us within 14 days for a hassle-free replacement or refund." },
   ];
   const [open, setOpen] = useState(0);
@@ -510,7 +509,7 @@ function Faq() {
         <SectionHeading
           eyebrow="FAQs"
           title={<>Questions, <span className="text-shimmer">Answered</span></>}
-          sub="Everything you need to know before welcoming ANSA into your wellness routine."
+          sub="Everything you need to know before welcoming ANSA into your hair-care routine."
         />
         <div className="mt-12 space-y-4">
           {faqs.map((f, i) => {
@@ -540,15 +539,33 @@ function Faq() {
 
 /* -------------------------------- CONTACT -------------------------------- */
 function Contact() {
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [state, setState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [error, setError] = useState("");
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `🌿 *New enquiry — ANSA Naturals*\n\n👤 *Name:* ${form.name}\n📞 *Phone:* ${form.phone}\n💬 *Message:* ${form.message}`;
-    window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    setState("submitting");
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setState("error");
+        setError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+      setState("success");
+      setForm({ name: "", email: "", phone: "", message: "" });
+      setTimeout(() => setState("idle"), 6000);
+    } catch {
+      setState("error");
+      setError("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -562,7 +579,7 @@ function Contact() {
             We&apos;d Love to <span className="text-[#e6c277]">Hear From You</span>
           </h2>
           <p className="mt-5 text-emerald-100/70 leading-relaxed max-w-lg" data-aos="fade-up" data-aos-delay="100">
-            Questions about the oil, your order, or wholesale partnerships? Our wellness team
+            Questions about the oil, your order, or wholesale partnerships? Our hair-care team
             responds within a few hours, seven days a week.
           </p>
           <div className="mt-8 space-y-4" data-aos="fade-up" data-aos-delay="200">
@@ -592,6 +609,11 @@ function Contact() {
               className="w-full rounded-xl border border-emerald-900/10 bg-[#fbfcf8] px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1f5c3d] focus:border-transparent transition-all" placeholder="e.g. Ayesha Khan" />
           </div>
           <div>
+            <label className="block text-xs font-semibold text-zinc-600 mb-1.5">Your Email</label>
+            <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="w-full rounded-xl border border-emerald-900/10 bg-[#fbfcf8] px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1f5c3d] focus:border-transparent transition-all" placeholder="you@example.com" />
+          </div>
+          <div>
             <label className="block text-xs font-semibold text-zinc-600 mb-1.5">Phone / WhatsApp</label>
             <input required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
               className="w-full rounded-xl border border-emerald-900/10 bg-[#fbfcf8] px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1f5c3d] focus:border-transparent transition-all" placeholder="03xx xxxxxxx" />
@@ -601,11 +623,17 @@ function Contact() {
             <textarea required rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="w-full rounded-xl border border-emerald-900/10 bg-[#fbfcf8] px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1f5c3d] focus:border-transparent transition-all resize-none" placeholder="How can we help you?" />
           </div>
-          <button type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white py-3.5 font-bold text-sm shadow-lg shadow-emerald-900/20 hover:shadow-emerald-900/40 hover:-translate-y-0.5 transition-all active:scale-95">
-            <FaWhatsapp className="text-lg" /> Send via WhatsApp
+          <button type="submit" disabled={state === "submitting"}
+            className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white py-3.5 font-bold text-sm shadow-lg shadow-emerald-900/20 hover:shadow-emerald-900/40 hover:-translate-y-0.5 transition-all active:scale-95 disabled:opacity-60 disabled:pointer-events-none">
+            {state === "submitting" ? (
+              <span className="inline-block w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+            ) : (
+              <FaEnvelope className="text-lg" />
+            )}
+            {state === "submitting" ? "Sending…" : "Send Message"}
           </button>
-          {sent && <p className="text-center text-sm font-semibold text-emerald-700 animate-pop">Opening WhatsApp — thank you! We&apos;ll reply shortly.</p>}
+          {state === "success" && <p className="text-center text-sm font-semibold text-emerald-700 animate-pop">Message sent! We&apos;ll reply to your email shortly.</p>}
+          {state === "error" && <p className="text-center text-sm font-semibold text-red-600 animate-pop">{error}</p>}
         </form>
       </div>
     </section>
@@ -626,11 +654,11 @@ function FinalCta() {
           <div className="relative">
             <p className="section-eyebrow flex items-center justify-center gap-2 mb-4"><span className="h-px w-8 bg-gold inline-block" />Limited Batch</p>
             <h2 className="text-3xl sm:text-5xl font-bold text-white leading-tight">
-              Begin Your Journey to <span className="text-[#e6c277] italic">Natural Wellness</span>
+              Begin Your Journey to <span className="text-[#e6c277] italic">Naturally Beautiful Hair</span>
             </h2>
             <p className="mt-5 text-emerald-100/80 max-w-xl mx-auto leading-relaxed">
-              Join 30,000+ customers who made the switch to pure, cold-pressed black seed oil.
-              Your body will thank you.
+              Join 30,000+ customers who made the switch to pure, cold-pressed natural hair oil.
+              Your hair will thank you.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button onClick={() => addToCart(product, 1)}
