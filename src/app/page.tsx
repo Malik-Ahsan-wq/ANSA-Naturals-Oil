@@ -41,6 +41,21 @@ function Hero() {
     <section className="relative overflow-hidden">
       {/* Nature background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#eef6ec] via-[#fbf8f1] to-[#fbf8f1]" />
+
+      {/* Brand film background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover opacity-[0.40] mix-blend-multiply"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src="/assets/ANSA_Naturals_Oil_commercial_202608031453.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#eef6ec]/80 via-[#fbf8f1]/60 to-[#fbf8f1]" />
+
       <div className="absolute -top-32 -right-32 w-[34rem] h-[34rem] rounded-full bg-emerald-200/40 blur-3xl" />
       <div className="absolute top-24 -left-40 w-[30rem] h-[30rem] rounded-full bg-amber-200/30 blur-3xl" />
       <Leaf variant="a" className="absolute top-32 left-[8%] w-16 h-16 text-emerald-700/30 -rotate-12 hidden lg:block" />
@@ -181,8 +196,8 @@ function About() {
         <div className="relative order-2 lg:order-1" data-aos="fade-right">
           <div className="absolute -top-8 -left-8 w-40 h-40 rounded-full bg-emerald-100/60 blur-2xl" />
           <div className="relative mx-auto max-w-md">
-            <div className="aspect-square rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#1f5c3d] via-[#2e7d57] to-[#123e29] p-6 sm:p-8 flex items-center justify-center animate-blob shadow-2xl shadow-emerald-900/30">
-              <ProductBottle className="w-[72%]" />
+            <div className="aspect-[3/4] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#1f5c3d] via-[#2e7d57] to-[#123e29] p-6 sm:p-8 flex items-center justify-center animate-blob shadow-2xl shadow-emerald-900/30">
+              <ProductBottle className="w-[70%]" />
             </div>
             <div className="absolute -bottom-6 -right-4 sm:right-2 bg-white rounded-2xl shadow-xl border border-emerald-900/5 px-5 py-4 flex items-center gap-3 animate-float">
               <OilDrop className="w-8 h-10 text-amber-500" />

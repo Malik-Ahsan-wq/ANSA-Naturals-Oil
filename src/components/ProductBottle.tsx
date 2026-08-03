@@ -1,4 +1,7 @@
+import Image from "next/image";
 import Leaf from "./Leaf";
+
+const PRODUCT_IMG = "/ChatGPT_Image_Aug_3__2026__03_02_44_PM-removebg-preview.png";
 
 export default function ProductBottle({ className }: { className?: string }) {
   return (
@@ -12,16 +15,27 @@ export default function ProductBottle({ className }: { className?: string }) {
       <Leaf variant="c" className="absolute -bottom-6 left-6 w-14 h-14 sm:w-20 sm:h-20 text-emerald-800/70 rotate-12 animate-float-slow" />
       <Leaf variant="a" className="absolute bottom-12 -right-4 w-12 h-12 sm:w-16 sm:h-16 text-lime-600/60 rotate-[60deg] animate-float-delay" />
 
-      {/* Bottle */}
-  
-<img src="/ChatGPT_Image_Aug_3__2026__03_02_44_PM-removebg-preview.png" alt="" />
+      {/* Bottle product shot */}
+      <div className="relative z-10 w-full max-w-[360px] mx-auto" style={{ aspectRatio: "408 / 612" }}>
+        <Image
+          src={PRODUCT_IMG}
+          alt="ANSA Naturals Pure Cold-Pressed Black Seed Oil bottle"
+          fill
+          sizes="(max-width: 768px) 60vw, 30vw"
+          priority
+          className="object-contain drop-shadow-[0_35px_35px_rgba(20,60,40,0.35)]"
+        />
+        {/* Ground shadow */}
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-3/5 h-5 rounded-full bg-emerald-900/20 blur-md" />
+      </div>
+
       {/* Floating oil drops */}
-      <div className="absolute top-8 right-2 sm:right-6 text-amber-400/80 animate-drift">
+      <div className="absolute top-8 right-2 sm:right-6 z-20 text-amber-400/80 animate-drift">
         <svg viewBox="0 0 32 76" width="20" height="40" fill="currentColor" aria-hidden="true">
           <path d="M16 2 C20 10 30 18 30 28 C30 38 24 42 16 42 C8 42 2 38 2 28 C2 18 12 10 16 2Z" />
         </svg>
       </div>
-      <div className="absolute top-24 left-0 text-amber-400/60 animate-drift-delay">
+      <div className="absolute top-24 left-0 z-20 text-amber-400/60 animate-drift-delay">
         <svg viewBox="0 0 32 76" width="14" height="30" fill="currentColor" aria-hidden="true">
           <path d="M16 2 C20 10 30 18 30 28 C30 38 22 42 16 42 C8 42 2 38 2 28 C2 18 12 10 16 2Z" />
         </svg>
