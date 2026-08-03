@@ -1,16 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { FaShoppingCart, FaUserShield } from "react-icons/fa";
+import { FaShoppingCart, FaLeaf, FaUserShield } from "react-icons/fa";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { useCart } from "@/context/CartContext";
+import { brand } from "@/data/brand";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Menu" },
-  { href: "/ourStory", label: "Our Story" },
+  { href: "#about", label: "Our Story" },
+  { href: "#benefits", label: "Benefits" },
+  { href: "#why-us", label: "Why Us" },
+  { href: "#reviews", label: "Reviews" },
+  { href: "#faq", label: "FAQs" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -21,13 +27,13 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // On non-home pages always show solid bg since there's no hero underneath
   const isHome = pathname === "/";
   const solid = scrolled || !isHome;
 
@@ -35,105 +41,119 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-[100] w-full transition-all duration-300 ${
         solid
-          ? "bg-white/95 backdrop-blur-lg border-b border-zinc-100 shadow-sm"
-          : "bg-black/20 backdrop-blur-md border-b border-white/10"
+          ? "bg-[#fbf8f1]/90 backdrop-blur-lg border-b border-emerald-900/10 shadow-sm"
+          : "bg-transparent backdrop-blur-[2px] border-b border-white/10"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 lg:h-20 items-center justify-between">
 
           {/* LOGO */}
-          <Link href="/" className="group flex items-center gap-2">
-            <div className="w-9 h-9 bg-orange-600 rounded-xl flex items-center justify-center text-white font-black text-lg transition-transform group-hover:rotate-12">
-              A
+          <Link href="/" className="group flex items-center">
+            <div className={`relative flex items-center rounded-xl overflow-hidden transition-shadow ${solid ? "bg-white shadow-sm border border-emerald-900/10" : ""}`}>
+              <Image
+                src={brand.logo}
+                alt={`${brand.name} logo`}
+                width={0}
+                height={0}
+                sizes="160px"
+                priority
+                className="h-9 lg:h-11 w-auto"
+              />
             </div>
-            <span className={`text-lg font-black tracking-tight uppercase transition-colors duration-300 ${solid ? "text-zinc-900" : "text-white"}`}>
-              AB <span className="text-orange-500">Restaurant</span>
-            </span>
           </Link>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isSection = link.href.startsWith("#");
+              const href = link.href === "/" ? "/" : isSection ? (isHome ? link.href : `/${link.href}`) : link.href;
+              const isActive = !isSection && pathname === link.href;
               return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative text-sm font-semibold transition-colors duration-300 hover:text-orange-500 ${
-                    isActive
-                      ? "text-orange-500"
-                      : solid ? "text-zinc-600" : "text-white/90"
+                <a
+                  key={link.label}
+                  href={href}
+                  className={`relative text-sm font-semibold transition-colors duration-300 hover:text-[#1f5c3d] ${
+                    isActive ? "text-[#1f5c3d]" : solid ? "text-zinc-600" : "text-emerald-50/90"
                   }`}
                 >
                   {link.label}
-                  {isActive && (
-                    <span className="absolute -bottom-[27px] left-0 w-full h-0.5 bg-orange-500 rounded-t-full" />
-                  )}
-                </Link>
+                </a>
               );
             })}
           </nav>
 
           {/* ACTIONS */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/products"
+              className={`hidden lg:inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold transition-all active:scale-95 shadow-lg ${
+                solid
+                  ? "bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white hover:shadow-emerald-900/30"
+                  : "bg-white text-[#1f5c3d] hover:bg-[#eef6ec]"
+              }`}
+            >
+              <FaLeaf /> Buy Now
+            </Link>
+
             <Link
               href="/admin/dashboard"
-              className={`hidden sm:inline-flex items-center gap-1.5 font-medium transition-colors duration-300 text-sm hover:text-orange-500 ${solid ? "text-zinc-600" : "text-white/90"}`}
+              className={`hidden sm:inline-flex items-center justify-center text-lg transition-colors duration-300 hover:text-[#1f5c3d] ${solid ? "text-zinc-500" : "text-white/80"}`}
+              aria-label="Admin"
             >
-              <FaUserShield className="text-lg" />
-              <span className="hidden lg:inline">Admin</span>
+              <FaUserShield />
             </Link>
 
             <button
               onClick={openCart}
-              className={`relative p-2 transition-colors duration-300 hover:text-orange-500 ${solid ? "text-zinc-600" : "text-white"}`}
+              className={`relative p-2 rounded-full transition-colors duration-300 hover:text-[#1f5c3d] ${solid ? "text-zinc-600" : "text-white"}`}
               aria-label="Open cart"
             >
               <FaShoppingCart className="text-xl" />
               {mounted && getCartCount() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-orange-600 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                <span className="absolute -top-0.5 -right-0.5 bg-[#c08a2e] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
                   {getCartCount()}
                 </span>
               )}
             </button>
 
-            {/* MOBILE MENU BUTTON */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 md:hidden transition-colors duration-300 hover:text-orange-500 ${solid ? "text-zinc-600" : "text-white"}`}
+              className={`p-2 lg:hidden transition-colors duration-300 hover:text-[#1f5c3d] ${solid ? "text-zinc-700" : "text-white"}`}
+              aria-label="Open menu"
             >
-              {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+              {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={26} />}
             </button>
           </div>
         </div>
 
         {/* MOBILE MENU */}
-        {isOpen && (
-          <div className="md:hidden pb-3 rounded-xl border border-zinc-200 bg-white shadow-lg mt-2 mb-2">
-            <nav className="flex flex-col divide-y divide-zinc-100">
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[28rem]" : "max-h-0"}`}>
+          <div className="mt-1 mb-3 rounded-2xl border border-emerald-900/10 bg-white shadow-xl overflow-hidden">
+            <nav className="flex flex-col">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
+                <a
+                  key={link.label}
+                  href={link.href === "/" ? "/" : `/${link.href}`}
                   onClick={() => setIsOpen(false)}
-                  className={`px-5 py-3.5 text-sm font-semibold ${
-                    pathname === link.href ? "text-orange-600" : "text-zinc-700"
-                  }`}
+                  className="px-5 py-3.5 text-sm font-semibold text-zinc-700 hover:bg-emerald-50 hover:text-[#1f5c3d] transition-colors flex items-center gap-2"
                 >
+                  <FaLeaf className="text-[#1f5c3d]/40 text-xs" />
                   {link.label}
-                </Link>
+                </a>
               ))}
-              <Link
-                href="/admin/dashboard"
-                onClick={() => setIsOpen(false)}
-                className="px-5 py-3.5 text-sm font-semibold text-zinc-700 flex items-center gap-2"
-              >
-                <FaUserShield /> Admin
-              </Link>
+              <div className="border-t border-emerald-900/5 p-4">
+                <Link
+                  href="/products"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white py-3 font-bold text-sm shadow-lg"
+                >
+                  <FaShoppingCart /> Shop Now
+                </Link>
+              </div>
             </nav>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );

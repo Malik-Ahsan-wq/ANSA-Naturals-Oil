@@ -1,117 +1,114 @@
+"use client";
+
 import Link from "next/link";
-import { FaInstagram, FaFacebook, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import Image from "next/image";
+import { FaInstagram, FaFacebook, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaLeaf, FaTiktok } from "react-icons/fa";
+import { brand, whatsappLink } from "@/data/brand";
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-50 border-t border-zinc-200 pt-10 sm:pt-16 pb-6 sm:pb-8">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <footer className="relative bg-[#0c2b1d] text-emerald-100/70 pt-16 pb-8 overflow-hidden">
+      <div className="absolute -top-20 -right-20 w-72 h-72 bg-emerald-600/10 rounded-full blur-3xl" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        {/* GRID COLUMNS */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12">
 
-          {/* Column 1: Brand & Bio */}
-            <div className="col-span-2 lg:col-span-1 space-y-4 sm:space-y-6">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center text-white font-black text-sm transition-transform group-hover:rotate-12">
-                A
+          {/* Brand */}
+          <div className="space-y-5">
+            <Link href="/" className="flex items-center">
+              <div className="rounded-xl overflow-hidden bg-white/5 p-1.5">
+                <Image src={brand.logo} alt={`${brand.name} logo`} width={0} height={0} sizes="168px" className="h-12 w-auto" />
               </div>
-              <span className="text-base sm:text-xl font-black tracking-tight text-zinc-900 uppercase">
-                AB <span className="text-orange-600">Restaurant</span>
-              </span>
             </Link>
-            <p className="text-zinc-500 text-xs sm:text-sm leading-relaxed max-w-xs">
-              Crafting unforgettable culinary experiences since 2010. We pride ourselves on using fresh ingredients and traditional techniques.
+            <p className="text-sm leading-relaxed max-w-xs">
+              Pure, cold-pressed black seed oil crafted with care — nature&apos;s most
+              potent wellness oil, bottled to perfection.
             </p>
-            <div className="flex items-center gap-4 flex-wrap">
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-zinc-200 flex items-center justify-center text-zinc-600 hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all shadow-sm">
-                <FaInstagram size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-zinc-200 flex items-center justify-center text-zinc-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all shadow-sm">
-                <FaFacebook size={18} />
-              </a>
-              <a 
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white border border-zinc-200 flex items-center justify-center text-zinc-600 hover:bg-green-600 hover:text-white hover:border-green-600 transition-all shadow-sm"
-              >
-                <FaWhatsapp size={18} />
-              </a>
+            <div className="flex items-center gap-3">
+              {[
+                { icon: FaInstagram, href: brand.social.instagram, label: "Instagram" },
+                { icon: FaFacebook, href: brand.social.facebook, label: "Facebook" },
+                { icon: FaTiktok, href: brand.social.tiktok, label: "TikTok" },
+                { icon: FaWhatsapp, href: whatsappLink("Hello ANSA Naturals!"), label: "WhatsApp" },
+              ].map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-emerald-100/80 hover:bg-[#2e7d57] hover:border-[#2e7d57] hover:text-white transition-all">
+                  <s.icon className="text-lg" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Explore */}
           <div>
-            <h4 className="text-zinc-900 font-bold mb-6 uppercase tracking-widest text-xs">Navigation</h4>
-            <ul className="space-y-4">
-              {['Home', 'Menu', 'Our Story', 'Reservations', 'Contact'].map((item) => (
-                <li key={item}>
-                  <Link 
-                    href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} 
-                    className="text-zinc-500 text-sm hover:text-orange-600 transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="w-1 h-1 bg-zinc-300 rounded-full group-hover:bg-orange-600 transition-colors" />
-                    {item}
-                  </Link>
+            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Explore</h4>
+            <ul className="space-y-3.5">
+              {[
+                { label: "Our Story", href: "#about" },
+                { label: "Benefits", href: "#benefits" },
+                { label: "Ingredients", href: "#ingredients" },
+                { label: "Reviews", href: "#reviews" },
+                { label: "FAQs", href: "#faq" },
+                { label: "Contact", href: "#contact" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-sm hover:text-[#e6c277] transition-colors flex items-center gap-2 group">
+                    <FaLeaf className="text-[#2e7d57] text-xs group-hover:text-[#e6c277] transition-colors" />
+                    {item.label}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Contact Info */}
+          {/* Contact */}
           <div>
-            <h4 className="text-zinc-900 font-bold mb-6 uppercase tracking-widest text-xs">Get In Touch</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-sm text-zinc-500">
-                <FaMapMarkerAlt className="mt-1 text-orange-600" />
-                <span>Khalid Town, <br />Food District, NY 10001</span>
+            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Contact</h4>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-center gap-3">
+                <FaPhoneAlt className="text-[#e6c277] shrink-0" />
+                <span>{brand.phone}</span>
               </li>
-              <li className="flex items-center gap-3 text-sm text-zinc-500">
-                <FaPhoneAlt className="text-orange-600" />
-                <span>03276227156</span>
+              <li className="flex items-center gap-3">
+                <FaEnvelope className="text-[#e6c277] shrink-0" />
+                <span>{brand.email}</span>
               </li>
-              <li className="flex items-center gap-3 text-sm text-zinc-500">
-                <FaEnvelope className="text-orange-600" />
-              
+              <li className="flex items-start gap-3">
+                <FaMapMarkerAlt className="text-[#e6c277] shrink-0 mt-0.5" />
+                <span>{brand.address}</span>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Opening Hours */}
+          {/* Newsletter / CTA */}
           <div>
-            <h4 className="text-zinc-900 font-bold mb-6 uppercase tracking-widest text-xs">Opening Hours</h4>
-            <div className="space-y-3 text-sm">
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Mon - Thu:</span>
-                <span className="text-zinc-900 font-medium">11am - 10pm</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Fri - Sat:</span>
-                <span className="text-orange-600 font-bold">11am - 12pm</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">Sunday:</span>
-                <span className="text-zinc-900 font-medium">10am - 9pm</span>
-              </div>
-              <p className="mt-4 text-[10px] text-zinc-400 italic">
-                * Kitchen closes 30 mins prior to closing time.
-              </p>
-            </div>
+            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Stay Nourished</h4>
+            <p className="text-sm mb-4">Join our wellness circle for exclusive offers and natural care tips.</p>
+            <form className="flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                required
+                placeholder="Your email address"
+                className="rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-emerald-100/40 outline-none focus:ring-2 focus:ring-[#c08a2e] transition-all"
+              />
+              <button className="rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white py-3 text-sm font-bold hover:shadow-lg hover:shadow-emerald-900/40 transition-all active:scale-[0.98]">
+                Subscribe
+              </button>
+            </form>
           </div>
-
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-zinc-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-          <p className="text-xs text-zinc-400">
-            © {new Date().getFullYear()} AB Restaurant. Built with passion for great food.
+        {/* Bottom bar */}
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+          <p className="text-xs opacity-70">
+            © {new Date().getFullYear()} {brand.name}. All rights reserved. Crafted with nature.
           </p>
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-xs text-zinc-400 uppercase tracking-widest">
-            <Link href="/privacy" className="hover:text-orange-600 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-orange-600 transition-colors">Terms of Service</Link>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-xs uppercase tracking-widest">
+            <Link href="/#faq" className="hover:text-[#e6c277] transition-colors">Privacy Policy</Link>
+            <Link href="/#faq" className="hover:text-[#e6c277] transition-colors">Terms of Service</Link>
+            <Link href="/#faq" className="hover:text-[#e6c277] transition-colors">Shipping & Returns</Link>
           </div>
         </div>
-
       </div>
     </footer>
   );

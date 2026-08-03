@@ -1,174 +1,151 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { FaUtensils, FaLeaf, FaAward, FaHeart } from "react-icons/fa";
+import { FaLeaf, FaSeedling, FaAward, FaHandHoldingHeart, FaHeart } from "react-icons/fa";
+import { brand } from "@/data/brand";
+import Leaf from "@/components/Leaf";
+import OilDrop from "@/components/OilDrop";
 
 const values = [
   {
-    icon: <FaLeaf className="text-orange-600" size={24} />,
-    title: "Fresh Ingredients",
-    description: "We source daily from local farms to ensure every dish serves the peak of seasonal flavor."
+    icon: <FaLeaf className="text-[#1f5c3d]" size={24} />,
+    title: "Radical Purity",
+    description: "One ingredient, nothing else. Our oil is single-origin black seed, pressed and bottled as nature intended."
   },
   {
-    icon: <FaUtensils className="text-orange-600" size={24} />,
-    title: "Culinary Craft",
-    description: "Our chefs combine traditional techniques with modern innovation for a unique plate."
+    icon: <FaSeedling className="text-[#1f5c3d]" size={24} />,
+    title: "Sustainable Sourcing",
+    description: "We partner with ethical farmers who use regenerative, pesticide-free cultivation methods."
   },
   {
-    icon: <FaAward className="text-orange-600" size={24} />,
-    title: "Quality First",
-    description: "From the kitchen to your table, we maintain the highest standards of food excellence."
+    icon: <FaAward className="text-[#1f5c3d]" size={24} />,
+    title: "Uncompromising Quality",
+    description: "Every batch is third-party lab tested, traceable and certified for purity and potency."
   },
   {
-    icon: <FaHeart className="text-orange-600" size={24} />,
-    title: "Guest Passion",
-    description: "At AB Restaurant, you aren't just a customer; you are a guest in our home."
+    icon: <FaHandHoldingHeart className="text-[#1f5c3d]" size={24} />,
+    title: "Wellness First",
+    description: "People, not profits. Your health and trust are the heart of everything we do."
   }
 ];
 
 export default function AboutPage() {
   return (
-    <main className="bg-white">
-      {/* --- HERO SECTION --- */}
-      <section className="relative -mt-16 h-[60vh] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/assets/interior2.jpg" // Replace with your interior image
-          alt="AB Restaurant Interior"
-          fill
-          className="object-cover brightness-50"
-          priority
-        />
-        <div className="relative z-10 text-center px-4" data-aos="zoom-in">
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight uppercase">
-            Our <span className="text-orange-500">Story</span>
+    <main className="min-h-screen bg-[#fbf8f1] overflow-x-hidden">
+      {/* Hero */}
+      <section className="relative pt-24 lg:pt-32 pb-16 lg:pb-20 overflow-hidden bg-gradient-to-b from-[#eef6ec] to-[#fbf8f1]">
+        <Leaf variant="a" className="absolute top-28 left-[8%] w-20 h-20 text-emerald-700/20 rotate-12 hidden lg:block" />
+        <Leaf variant="b" className="absolute bottom-8 right-[10%] w-16 h-16 text-green-700/20 -rotate-12 hidden lg:block" />
+        <div className="relative mx-auto max-w-4xl px-4 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/70 border border-emerald-200 px-5 py-2 shadow-sm mb-6">
+            <FaLeaf className="text-emerald-700" />
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-800">Our Story</span>
+          </div>
+          <h1 className="text-4xl sm:text-6xl font-bold text-[#0f3524] leading-tight">
+            The <span className="text-shimmer italic">Blessed Seed</span>,<br />Reimagined
           </h1>
-          <p className="mt-4 text-zinc-200 text-lg md:text-xl max-w-2xl mx-auto font-medium">
-            A journey of flavors, tradition, and the pursuit of culinary perfection since 2010.
+          <p className="mt-6 text-lg text-zinc-600 max-w-2xl mx-auto leading-relaxed">
+            A journey rooted in nature&apos;s most time-honoured remedy, perfected by modern
+            science to bring pure, potent wellness to every home.
           </p>
+          <div className="mt-8 flex justify-center">
+            <Image src={brand.logo} alt={`${brand.name} logo`} width={0} height={0} sizes="320px" className="h-20 md:h-24 w-auto opacity-80" />
+          </div>
         </div>
       </section>
 
-      {/* --- THE JOURNEY SECTION --- */}
-      <section className="mx-auto max-w-7xl px-4 py-20 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative" data-aos="fade-right">
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-orange-100 rounded-full -z-10" />
-            <Image
-              src="/assets/kithchenchef.jpg" // Replace with a chef/kitchen image
-              alt="Our Chef at work"
-              width={600}
-              height={700}
-              className="rounded-3xl shadow-2xl object-cover aspect-[4/5]"
-            />
-            <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-2xl shadow-xl hidden md:block border border-zinc-100">
-              <p className="text-4xl font-black text-orange-600">14+</p>
-              <p className="text-sm font-bold text-zinc-500 uppercase tracking-widest">Years of Excellence</p>
+      {/* Journey */}
+      <section className="mx-auto max-w-7xl px-4 py-16 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <div className="relative order-2 lg:order-1" >
+            <div className="absolute -top-6 -left-6 w-40 h-40 bg-emerald-100/70 rounded-full blur-2xl" />
+            <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#1f5c3d] via-[#2e7d57] to-[#123e29] flex items-center justify-center p-8 shadow-2xl shadow-emerald-900/30">
+              <div className="text-center text-white">
+                <OilDrop className="w-16 h-20 text-amber-300/80 mx-auto mb-4" />
+                <p className="font-serif italic text-2xl">Since 2016</p>
+                <p className="mt-2 text-emerald-100/70 max-w-[220px] mx-auto text-sm">A decade of perfecting the art of cold-pressed purity.</p>
+              </div>
+            </div>
+            <div className="absolute -bottom-6 -right-4 bg-white rounded-2xl shadow-xl border border-emerald-900/5 px-6 py-4">
+              <p className="text-2xl font-bold text-[#1f5c3d]">30,000+</p>
+              <p className="text-xs text-zinc-500">Happy Homes</p>
             </div>
           </div>
 
-          <div className="space-y-8" data-aos="fade-left">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-widest">
-              Established 2010
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black text-zinc-900 leading-tight">
-              Started from a passion for <br />
-              <span className="text-orange-600">authentic taste.</span>
+          <div className="order-1 lg:order-2">
+            <p className="section-eyebrow flex items-center gap-2 mb-3"><span className="h-px w-8 bg-gold inline-block" />Our Story</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#14241b] leading-tight">
+              From Ancient Wisdom to<br /><span className="text-shimmer">Modern Excellence</span>
             </h2>
-            <div className="space-y-4 text-zinc-600 leading-relaxed text-lg">
+            <div className="mt-6 space-y-4 text-zinc-600 leading-relaxed">
               <p>
-                AB Restaurant began with a simple vision: to create a space where food is treated as art and guests are treated as family. What started as a small kitchen has grown into a destination for food enthusiasts.
+                Black seed has been celebrated for centuries across civilisations as a
+                blessing of nature. Yet in a market flooded with heat-processed, diluted oils,
+                its true power was being lost.
               </p>
               <p>
-                We believe that the secret to great food lies in the details. From the precise temperature of our grills to the hand-picked herbs in our sauces, we never compromise on quality.
+                ANSA Naturals was founded on a simple conviction: <strong className="text-[#1f5c3d]">purity should never be compromised.</strong>
+                We built relationships with ethical seed farmers, engineered a cold-press process below
+                40°C, and introduced lab-certified transparency where none existed.
+              </p>
+              <p>
+                Today, our entire range is distilled into a single flagship oil we are proud to
+                stand behind — because when you focus on one thing and do it perfectly, the
+                results speak for themselves.
               </p>
             </div>
-            <div className="pt-4">
-              <Link 
-                href="/products" 
-                className="inline-flex items-center justify-center rounded-full bg-zinc-900 text-white px-10 py-4 text-sm font-bold transition-all hover:bg-zinc-800 hover:shadow-xl active:scale-95"
-              >
-                Experience the Menu
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/products" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white px-8 py-3.5 font-bold text-sm shadow-lg hover:shadow-emerald-900/30 hover:-translate-y-0.5 transition-all active:scale-95">
+                Shop the Oil
+              </Link>
+              <Link href="/#benefits" className="inline-flex items-center gap-2 rounded-full bg-white border border-emerald-200 text-[#1f5c3d] px-8 py-3.5 font-bold text-sm hover:bg-emerald-50 transition-all active:scale-95">
+                See the Benefits
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- CORE VALUES GRID --- */}
-      <section className="bg-zinc-50 py-24 border-y border-zinc-100">
+      {/* Values */}
+      <section className="bg-[#f7faf6] border-y border-emerald-900/5 py-20">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-3xl md:text-5xl font-black text-zinc-900">What We Stand For</h2>
-            <p className="mt-4 text-zinc-500">The pillars of our culinary philosophy.</p>
+          <div className="text-center mb-14">
+            <p className="section-eyebrow flex items-center justify-center gap-2 mb-3"><span className="h-px w-8 bg-gold inline-block" />What We Stand For<span className="h-px w-8 bg-gold inline-block" /></p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#14241b]">The Values That Shape Us</h2>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
-              <div 
-                key={i} 
-                className="bg-white p-8 rounded-3xl shadow-sm border border-zinc-100 transition-all hover:shadow-xl hover:-translate-y-2 group"
-                data-aos="fade-up"
-                data-aos-delay={i * 100}
-              >
-                <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+              <div key={i} className="bg-white p-8 rounded-3xl border border-emerald-900/8 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
+                <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#1f5c3d] group-hover:to-[#2e7d57] group-hover:text-white transition-all">
                   {v.icon}
                 </div>
-                <h3 className="text-xl font-bold text-zinc-900 mb-3">{v.title}</h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">{v.description}</p>
+                <h3 className="text-lg font-bold text-[#14241b] mb-2">{v.title}</h3>
+                <p className="text-sm text-zinc-500 leading-relaxed">{v.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* --- THE MASTERMIND SECTION --- */}
-      <section className="mx-auto max-w-7xl px-4 py-24 lg:py-32">
-        <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
-          <div className="w-full lg:w-1/2" data-aos="fade-left">
-             <Image
-              src="/assets/headerchef.png" // Replace with a chef portrait
-              alt="Head Chef"
-              width={600}
-              height={600}
-              className="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-            />
-          </div>
-          <div className="w-full lg:w-1/2 space-y-6" data-aos="fade-right">
-            <h3 className="text-orange-600 font-bold tracking-widest uppercase text-sm">The Mastermind</h3>
-            <h2 className="text-4xl md:text-5xl font-black text-zinc-900">Chef Arsalan Bashir</h2>
-            <p className="text-xl text-zinc-500 italic">&quot;Cooking is a language that speaks to the soul.&quot;</p>
-            <p className="text-zinc-600 leading-relaxed text-lg">
-              With over two decades of experience in Michelin-starred kitchens across the globe, Chef Arsalan brings a world of expertise back to AB Restaurant. His philosophy is simple: respect the ingredient, and the dish will respect you.
+      {/* CTA */}
+      <section className="mx-auto max-w-7xl px-4 py-20">
+        <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#1f5c3d] via-[#2e7d57] to-[#123e29] p-10 sm:p-16 text-center shadow-2xl">
+          <Leaf variant="a" className="absolute -left-4 -bottom-4 w-28 h-28 text-emerald-200/10 rotate-12" />
+          <OilDrop className="absolute right-12 top-6 w-8 h-10 text-amber-300/20 animate-float" />
+          <div className="relative">
+            <FaHeart className="text-[#e6c277] mx-auto mb-4 text-xl" />
+            <h2 className="text-3xl sm:text-5xl font-bold text-white">Ready to Feel the Difference?</h2>
+            <p className="mt-5 text-emerald-100/80 max-w-xl mx-auto leading-relaxed">
+              Choose the pure option. Order your first bottle of ANSA Naturals and experience
+              what true, uncompromising quality feels like.
             </p>
-            <div className="flex gap-4 pt-4">
-               {/* Decorative Chef Signature Placeholder */}
-               <div className="w-32 h-16 bg-zinc-100 rounded opacity-50 flex items-center justify-center italic font-serif text-zinc-400">
-                 Signature
-               </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link href="/products" className="inline-flex items-center gap-2 rounded-full bg-white text-[#1f5c3d] px-10 py-4 font-bold shadow-xl hover:bg-amber-50 transition-all active:scale-95">
+                Order Now
+              </Link>
+              <Link href="/#contact" className="inline-flex items-center gap-2 rounded-full border border-white/30 text-white px-10 py-4 font-bold hover:bg-white/10 transition-all active:scale-95">
+                Contact Us
+              </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- FINAL CTA --- */}
-      <section className="mx-auto max-w-7xl px-4 pb-24">
-        <div className="bg-orange-600 rounded-[3rem] p-12 md:p-20 text-center text-white overflow-hidden relative" data-aos="zoom-in">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-          <h2 className="text-4xl md:text-6xl font-black mb-6">Ready to Taste the Story?</h2>
-          <p className="text-orange-100 mb-10 text-lg max-w-xl mx-auto">
-            Book your table today or order online to experience why we are the city&apos;s favorite culinary destination.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/products" className="bg-white text-orange-600 px-10 py-4 rounded-full font-bold shadow-lg hover:bg-zinc-100 transition-all active:scale-95">
-              Order Now
-            </Link>
-            <a 
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
-              className="bg-zinc-900 text-white px-10 py-4 rounded-full font-bold shadow-lg hover:bg-black transition-all active:scale-95"
-            >
-              Contact Us
-            </a>
           </div>
         </div>
       </section>

@@ -30,6 +30,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const saved = localStorage.getItem("cart");
     if (saved) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       try { setItems(JSON.parse(saved)); } catch {}
     }
   }, []);

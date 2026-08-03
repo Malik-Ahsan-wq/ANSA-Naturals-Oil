@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
-import { FaTimes, FaTrash, FaPlus, FaMinus, FaShoppingBag, FaWhatsapp } from "react-icons/fa";
+import { FaTimes, FaTrash, FaPlus, FaMinus, FaLeaf, FaWhatsapp } from "react-icons/fa";
+import { brand } from "@/data/brand";
+import OilDrop from "./OilDrop";
 
 export default function CartSidebar() {
   const { items, isCartOpen, closeCart, removeFromCart, updateQuantity, getCartTotal, getCartCount } = useCart();
@@ -14,71 +16,73 @@ export default function CartSidebar() {
     return () => { document.body.style.overflow = ""; };
   }, [isCartOpen]);
 
+  const placeOrder = () => {
+    if (items.length === 0) return;
+    const lines = items.map((i) => `🌿 ${i.product.name} × ${i.quantity} = ${brand.currency} ${(i.product.price * i.quantity).toLocaleString()}`).join("\n");
+    const msg = `*New Order — ANSA Naturals*\n\n*Items:*\n${lines}\n\n*Total: ${brand.currency} ${getCartTotal().toLocaleString()}*\n*Payment:* Cash on Delivery`;
+    window.open(`https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+  };
+
   return (
     <>
-      {/* BACKDROP */}
       <div onClick={closeCart}
-        className={`fixed inset-0 z-[200] bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${isCartOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} />
+        className={`fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${isCartOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} />
 
-      {/* SIDEBAR */}
-      <aside className={`fixed top-0 right-0 z-[201] h-full w-full sm:max-w-[390px] bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${isCartOpen ? "translate-x-0" : "translate-x-full"}`}>
-
-        {/* HEADER */}
-        <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 sm:py-4 border-b border-zinc-100">
+      <aside className={`fixed top-0 right-0 z-[201] h-full w-full sm:max-w-[400px] bg-[#fbf8f1] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${isCartOpen ? "translate-x-0" : "translate-x-full"}`}>
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-emerald-900/10 bg-white">
           <div className="flex items-center gap-2">
-            <FaShoppingBag className="text-orange-600 text-base sm:text-lg" />
-            <h2 className="font-black text-zinc-900 text-base sm:text-lg">Your Cart</h2>
+            <OilDrop className="w-6 h-7 text-[#c08a2e]" />
+            <h2 className="font-bold text-[#14241b] text-lg">Your Cart</h2>
             {getCartCount() > 0 && (
-              <span className="bg-orange-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">{getCartCount()}</span>
+              <span className="bg-[#1f5c3d] text-white text-xs font-bold px-2 py-0.5 rounded-full">{getCartCount()}</span>
             )}
           </div>
-          <button onClick={closeCart} className="w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 flex items-center justify-center text-zinc-600 transition-colors">
+          <button onClick={closeCart} className="w-8 h-8 rounded-full bg-emerald-50 hover:bg-emerald-100 flex items-center justify-center text-[#1f5c3d] transition-colors">
             <FaTimes size={13} />
           </button>
         </div>
 
-        {/* ITEMS */}
-        <div className="flex-1 overflow-y-auto px-4 sm:px-5 py-3 sm:py-4 space-y-3">
+        {/* Items */}
+        <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
           {items.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center gap-4 py-16">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-zinc-100 rounded-full flex items-center justify-center">
-                <FaShoppingBag className="text-2xl sm:text-3xl text-zinc-300" />
+              <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center">
+                <FaLeaf className="text-3xl text-emerald-300" />
               </div>
-              <p className="font-bold text-zinc-800 text-sm sm:text-base">Your cart is empty</p>
-              <p className="text-xs sm:text-sm text-zinc-400">Add items from our menu to get started</p>
-              <button onClick={closeCart} className="mt-1 bg-orange-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-orange-700 transition-colors">
-                Browse Menu
-              </button>
+              <p className="font-bold text-[#14241b] text-base">Your cart is empty</p>
+              <p className="text-sm text-zinc-400 max-w-[200px]">Add our pure black seed oil to begin your wellness journey</p>
+              <Link href="/products" onClick={closeCart} className="mt-1 bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white px-6 py-3 rounded-xl font-bold text-sm hover:shadow-lg transition-all">
+                Shop the Oil
+              </Link>
             </div>
           ) : (
             items.map((item) => (
-              <div key={item.product.id} className="flex gap-2.5 sm:gap-3 bg-zinc-50 rounded-xl p-2.5 sm:p-3 border border-zinc-100">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden flex-shrink-0 bg-zinc-200">
-                  <Image src={item.product.image} alt={item.product.name} width={64} height={64} className="w-full h-full object-cover" />
+              <div key={item.product.id} className="flex gap-3 bg-white rounded-2xl p-3 border border-emerald-900/5 shadow-sm">
+                <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-[#f0f7ef] flex items-center justify-center">
+                  <Image src={item.product.image} alt={item.product.name} width={64} height={64} className="w-full h-full object-contain" />
                 </div>
-
                 <div className="flex-1 min-w-0">
-                  <p className="font-bold text-xs sm:text-sm text-zinc-900 line-clamp-1">{item.product.name}</p>
-                  <p className="text-[10px] sm:text-xs text-zinc-400 mt-0.5">Rs {item.product.price.toLocaleString()} each</p>
-                  <div className="flex items-center gap-1.5 sm:gap-2 mt-1.5 sm:mt-2">
+                  <p className="font-bold text-sm text-[#14241b] line-clamp-1">{item.product.name}</p>
+                  <p className="text-xs text-zinc-400 mt-0.5">{brand.currency} {item.product.price.toLocaleString()} each</p>
+                  <div className="flex items-center gap-2 mt-2">
                     <button onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                      className="w-5 h-5 sm:w-6 sm:h-6 rounded-md bg-white border border-zinc-200 flex items-center justify-center text-zinc-600 hover:border-orange-400 hover:text-orange-600 transition-colors">
+                      className="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-[#1f5c3d] hover:bg-emerald-100 transition-colors">
                       <FaMinus size={7} />
                     </button>
-                    <span className="text-xs sm:text-sm font-bold text-zinc-800 w-4 text-center">{item.quantity}</span>
+                    <span className="text-sm font-bold text-[#14241b] w-4 text-center">{item.quantity}</span>
                     <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                      className="w-5 h-5 sm:w-6 sm:h-6 rounded-md bg-white border border-zinc-200 flex items-center justify-center text-zinc-600 hover:border-orange-400 hover:text-orange-600 transition-colors">
+                      className="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-[#1f5c3d] hover:bg-emerald-100 transition-colors">
                       <FaPlus size={7} />
                     </button>
                   </div>
                 </div>
-
                 <div className="flex flex-col items-end justify-between">
-                  <button onClick={() => removeFromCart(item.product.id)} className="text-zinc-300 hover:text-red-500 transition-colors">
+                  <button onClick={() => removeFromCart(item.product.id)} className="text-zinc-300 hover:text-red-500 transition-colors" aria-label="Remove">
                     <FaTrash size={11} />
                   </button>
-                  <p className="text-xs sm:text-sm font-black text-orange-600 whitespace-nowrap">
-                    Rs {(item.product.price * item.quantity).toLocaleString()}
+                  <p className="text-sm font-bold text-[#1f5c3d] whitespace-nowrap">
+                    {brand.currency} {(item.product.price * item.quantity).toLocaleString()}
                   </p>
                 </div>
               </div>
@@ -86,19 +90,20 @@ export default function CartSidebar() {
           )}
         </div>
 
-        {/* FOOTER */}
+        {/* Footer */}
         {items.length > 0 && (
-          <div className="border-t border-zinc-100 px-4 sm:px-5 py-3.5 sm:py-4 space-y-2.5 sm:space-y-3 bg-white">
+          <div className="border-t border-emerald-900/10 px-5 py-4 space-y-3 bg-white">
             <div className="flex justify-between items-center">
-              <span className="text-zinc-500 font-medium text-xs sm:text-sm">Subtotal</span>
-              <span className="text-lg sm:text-xl font-black text-zinc-900">Rs {getCartTotal().toLocaleString()}</span>
+              <span className="text-zinc-500 font-medium text-sm">Subtotal</span>
+              <span className="text-xl font-bold text-[#14241b]">{brand.currency} {getCartTotal().toLocaleString()}</span>
             </div>
-            <Link href="/checkout" onClick={closeCart}
-              className="w-full bg-green-600 hover:bg-green-700 text-white py-3 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all active:scale-95 shadow-md">
-              <FaWhatsapp className="text-base sm:text-lg" /> Place Order via WhatsApp
-            </Link>
+            <p className="text-xs text-emerald-700 flex items-center gap-1.5"><FaLeaf/> Free nationwide delivery applied at checkout</p>
+            <button onClick={placeOrder}
+              className="w-full bg-gradient-to-r from-[#0f3524] to-[#1f5c3d] hover:shadow-lg text-white py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all active:scale-95 shadow-md">
+              <FaWhatsapp className="text-lg" /> Place Order via WhatsApp
+            </button>
             <Link href="/cart" onClick={closeCart}
-              className="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center transition-all">
+              className="w-full bg-emerald-50 hover:bg-emerald-100 text-[#1f5c3d] py-3 rounded-xl font-bold text-sm flex items-center justify-center transition-all">
               View Full Cart
             </Link>
           </div>
