@@ -29,28 +29,37 @@ export default function Navbar() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-    const onScroll = () => setScrolled(window.scrollY > 20);
+
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    onScroll();
+
     window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isHome = pathname === "/";
-  const solid = scrolled || !isHome;
-
   return (
-    <header
+<header
       className={`fixed top-0 left-0 right-0 z-[100] w-full transition-all duration-300 ${
-        solid
-          ? "bg-[#fbf8f1]/90 backdrop-blur-lg border-b border-emerald-900/10 shadow-sm"
-          : "bg-transparent backdrop-blur-[2px] border-b border-white/10"
+        scrolled
+          ? "bg-[#fbf8f1]/95 backdrop-blur-lg border-b border-emerald-900/10 shadow-md"
+          : "bg-[#fbf8f1]/60 backdrop-blur-md border-b border-emerald-900/5"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 lg:h-20 items-center justify-between">
-
           {/* LOGO */}
           <Link href="/" className="group flex items-center">
-            <div className={`relative flex items-center rounded-xl overflow-hidden transition-shadow ${solid ? "bg-white shadow-sm border border-emerald-900/10" : ""}`}>
+            <div
+              className={`relative flex items-center rounded-xl overflow-hidden transition-all duration-300 ${
+                scrolled
+                  ? "bg-white shadow-sm border border-gray-200"
+                  : "bg-transparent"
+              }`}
+            >
               <Image
                 src={brand.logo}
                 alt={`${brand.name} logo`}
@@ -67,14 +76,24 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => {
               const isSection = link.href.startsWith("#");
-              const href = link.href === "/" ? "/" : isSection ? (isHome ? link.href : `/${link.href}`) : link.href;
+
+              const href =
+                link.href === "/"
+                  ? "/"
+                  : isSection
+                  ? pathname === "/"
+                    ? link.href
+                    : `/${link.href}`
+                  : link.href;
+
               const isActive = !isSection && pathname === link.href;
+
               return (
                 <a
                   key={link.label}
                   href={href}
                   className={`relative text-sm font-semibold transition-colors duration-300 hover:text-[#1f5c3d] ${
-                    isActive ? "text-[#1f5c3d]" : solid ? "text-zinc-600" : "text-emerald-50/90"
+                    isActive ? "text-[#1f5c3d] font-bold" : "text-zinc-600"
                   }`}
                 >
                   {link.label}
@@ -87,18 +106,15 @@ export default function Navbar() {
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/products"
-              className={`hidden lg:inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-bold transition-all active:scale-95 shadow-lg ${
-                solid
-                  ? "bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white hover:shadow-emerald-900/30"
-                  : "bg-white text-[#1f5c3d] hover:bg-[#eef6ec]"
-              }`}
+              className="hidden lg:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] px-6 py-2.5 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
             >
-              <FaLeaf /> Buy Now
+              <FaLeaf />
+              Buy Now
             </Link>
 
             <Link
               href="/admin/dashboard"
-              className={`hidden sm:inline-flex items-center justify-center text-lg transition-colors duration-300 hover:text-[#1f5c3d] ${solid ? "text-zinc-500" : "text-white/80"}`}
+              className="hidden sm:inline-flex items-center justify-center text-lg text-zinc-600 transition-colors duration-300 hover:text-[#1f5c3d]"
               aria-label="Admin"
             >
               <FaUserShield />
@@ -106,12 +122,13 @@ export default function Navbar() {
 
             <button
               onClick={openCart}
-              className={`relative p-2 rounded-full transition-colors duration-300 hover:text-[#1f5c3d] ${solid ? "text-zinc-600" : "text-white"}`}
+              className="relative rounded-full p-2 text-zinc-700 transition-colors duration-300 hover:text-[#1f5c3d]"
               aria-label="Open cart"
             >
               <FaShoppingCart className="text-xl" />
+
               {mounted && getCartCount() > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-[#c08a2e] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#c08a2e] text-[10px] font-bold text-white">
                   {getCartCount()}
                 </span>
               )}
@@ -119,8 +136,8 @@ export default function Navbar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 lg:hidden transition-colors duration-300 hover:text-[#1f5c3d] ${solid ? "text-zinc-700" : "text-white"}`}
-              aria-label="Open menu"
+              className="p-2 text-zinc-700 transition-colors duration-300 lg:hidden hover:text-[#1f5c3d]"
+              aria-label="Toggle menu"
             >
               {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={26} />}
             </button>
@@ -128,27 +145,46 @@ export default function Navbar() {
         </div>
 
         {/* MOBILE MENU */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[28rem]" : "max-h-0"}`}>
-          <div className="mt-1 mb-3 rounded-2xl border border-emerald-900/10 bg-white shadow-xl overflow-hidden">
+        <div
+          className={`overflow-hidden transition-all duration-300 lg:hidden ${
+            isOpen ? "max-h-[28rem]" : "max-h-0"
+          }`}
+        >
+          <div className="mt-1 mb-3 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
             <nav className="flex flex-col">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href === "/" ? "/" : `/${link.href}`}
-                  onClick={() => setIsOpen(false)}
-                  className="px-5 py-3.5 text-sm font-semibold text-zinc-700 hover:bg-emerald-50 hover:text-[#1f5c3d] transition-colors flex items-center gap-2"
-                >
-                  <FaLeaf className="text-[#1f5c3d]/40 text-xs" />
-                  {link.label}
-                </a>
-              ))}
-              <div className="border-t border-emerald-900/5 p-4">
+              {navLinks.map((link) => {
+                const isSection = link.href.startsWith("#");
+
+                const href =
+                  link.href === "/"
+                    ? "/"
+                    : isSection
+                    ? pathname === "/"
+                      ? link.href
+                      : `/${link.href}`
+                    : link.href;
+
+                return (
+                  <a
+                    key={link.label}
+                    href={href}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-2 px-5 py-3.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-emerald-50 hover:text-[#1f5c3d]"
+                  >
+                    <FaLeaf className="text-xs text-[#1f5c3d]/40" />
+                    {link.label}
+                  </a>
+                );
+              })}
+
+              <div className="border-t border-gray-200 p-4">
                 <Link
                   href="/products"
                   onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white py-3 font-bold text-sm shadow-lg"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] py-3 text-sm font-bold text-white shadow-lg"
                 >
-                  <FaShoppingCart /> Shop Now
+                  <FaShoppingCart />
+                  Shop Now
                 </Link>
               </div>
             </nav>

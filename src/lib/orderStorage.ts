@@ -1,29 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { OrderData, ORDER_STATUSES } from './orderTypes';
 
 const DATA_FILE = path.join(process.cwd(), 'src', 'data', 'orders.json');
-
-export const ORDER_STATUSES = ["Pending", "Confirmed", "Completed", "Cancelled"] as const;
-
-export interface OrderData {
-  _id: string;
-  customerName: string;
-  email: string;
-  address: string;
-  phone: string;
-  note?: string;
-  totalAmount: number;
-  status: string;
-  paymentMethod: string;
-  items: {
-    productId: string;
-    productName: string;
-    quantity: number;
-    price: number;
-  }[];
-  createdAt: string;
-  updatedAt: string;
-}
 
 async function ensureDataDir() {
   const dir = path.dirname(DATA_FILE);

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { OrderData, ORDER_STATUSES } from "@/lib/orderStorage";
+import { OrderData, ORDER_STATUSES } from "@/lib/orderTypes";
 import { FaTrash, FaPhoneAlt, FaMapMarkerAlt, FaBoxOpen, FaEnvelope } from "react-icons/fa";
 import Swal from "sweetalert2";
 
@@ -110,7 +110,7 @@ export default function AdminDashboard() {
       }
       setOrders((prev) => prev.map((o) => (o._id === id ? { ...o, status } : o)));
       const label = status === "Confirmed" ? "Order confirmed" : `Status set to ${status}`;
-      Swal({
+      Swal.fire({
         toast: true,
         position: "top-end",
         icon: "success",
@@ -130,6 +130,9 @@ export default function AdminDashboard() {
     "bg-amber-100 text-amber-700";
 
   const filteredOrders = filter === "All" ? orders : orders.filter((o) => o.status === filter);
+
+  const countFor = (status: string) =>
+    status === "All" ? orders.length : orders.filter((o) => o.status === status).length;
 
   if (loading) {
     return (
@@ -154,16 +157,23 @@ export default function AdminDashboard() {
           </div>
 
           {/* FILTER TABS */}
-          <div className="flex gap-1 bg-white p-1 rounded-xl border border-zinc-200 shadow-sm w-fit">
+          <div className="flex gap-1 bg-white p-1 rounded-xl border border-zinc-200 shadow-sm w-fit max-w-full overflow-x-auto">
             {["All", ...ORDER_STATUSES].map((s) => (
               <button
                 key={s}
                 onClick={() => setFilter(s)}
-                className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+                className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
                   filter === s ? "bg-zinc-900 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-900"
                 }`}
               >
                 {s}
+                <span
+                  className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none ${
+                    filter === s ? "bg-white/20 text-white" : "bg-zinc-100 text-zinc-400"
+                  }`}
+                >
+                  {countFor(s)}
+                </span>
               </button>
             ))}
           </div>
