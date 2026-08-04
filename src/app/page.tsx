@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import Link from "next/link";
 import {
   FaLeaf, FaAward, FaShieldAlt, FaHandHoldingHeart, FaSeedling, FaFlask,
   FaRecycle, FaTruck, FaArrowRight, FaPlus, FaMinus, FaShoppingCart,
   FaCheckCircle, FaWhatsapp, FaMapMarkerAlt, FaEnvelope,
-  FaStar, FaQuoteLeft, FaChevronDown,
+  FaStar, FaQuoteLeft, FaChevronDown, FaChevronLeft, FaChevronRight,
 } from "react-icons/fa";
 import { products } from "@/data/products";
 import { brand } from "@/data/brand";
@@ -16,6 +16,97 @@ import Leaf from "@/components/Leaf";
 import OilDrop from "@/components/OilDrop";
 
 const product = products[0];
+
+/* ----------------------------- Animated Counter ---------------------------- */
+function useAnimatedCounter(target: number, duration = 2000, startOnView = true) {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!startOnView) { setStarted(true); return; }
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStarted(true); obs.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [startOnView]);
+
+  useEffect(() => {
+    if (!started) return;
+    let raf: number;
+    const start = performance.now();
+    const animate = (now: number) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * target));
+      if (progress < 1) raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, [started, target, duration]);
+
+  return { count, ref };
+}
+
+/* ----------------------------- Review Slider Hook ---------------------------- */
+function useReviewSlider(totalSlides: number) {
+  const [current, setCurrent] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchDelta, setTouchDelta] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const getMaxSlide = useCallback(() => {
+    if (typeof window === "undefined") return 0;
+    if (window.innerWidth < 640) return totalSlides - 1;
+    if (window.innerWidth < 1024) return Math.ceil(totalSlides / 2) - 1;
+    return Math.ceil(totalSlides / 3) - 1;
+  }, [totalSlides]);
+
+  const next = useCallback(() => {
+    setCurrent(c => c >= getMaxSlide() ? 0 : c + 1);
+  }, [getMaxSlide]);
+
+  const prev = useCallback(() => {
+    setCurrent(c => c <= 0 ? getMaxSlide() : c - 1);
+  }, [getMaxSlide]);
+
+  const goTo = useCallback((i: number) => setCurrent(i), []);
+
+  useEffect(() => {
+    if (!autoplay) return;
+    intervalRef.current = setInterval(next, 4000);
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [autoplay, next]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+    setDragging(true);
+    setAutoplay(false);
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchDelta(e.touches[0].clientX - touchStart);
+  };
+  const handleTouchEnd = () => {
+    setDragging(false);
+    if (touchDelta < -50) next();
+    else if (touchDelta > 50) prev();
+    setTouchDelta(0);
+    setTimeout(() => setAutoplay(true), 6000);
+  };
+
+  return {
+    current, next, prev, goTo, dragging, touchDelta,
+    handleTouchStart, handleTouchMove, handleTouchEnd,
+    getMaxSlide,
+  };
+}
 
 /* ------------------------------ Section heading ----------------------------- */
 function SectionHeading({ eyebrow, title, sub, light }: { eyebrow: string; title: ReactNode; sub?: string; light?: boolean }) {
@@ -110,7 +201,7 @@ function Hero() {
             </div>
             <button
               onClick={() => addToCart(product, qty)}
-              className="group relative inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white px-8 py-4 text-sm font-bold shadow-xl shadow-emerald-900/20 hover:shadow-emerald-900/40 hover:-translate-y-0.5 transition-all active:scale-95 w-full sm:w-auto justify-center"
+              className="group relative inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white px-8 py-4 text-sm font-bold shadow-xl shadow-emerald-900/20 hover:shadow-emerald-900/40 hover:-translate-y-0.5 transition-all active:scale-95 w-full sm:w-auto justify-center animate-bounce-up"
             >
               <FaShoppingCart className="text-base group-hover:rotate-12 transition-transform" />
               Add {qty} to Cart · {brand.currency} {(product.price * qty).toLocaleString()}
@@ -153,27 +244,40 @@ function Hero() {
 }
 
 /* --------------------------------- STATS --------------------------------- */
+function StatItem({ icon: Icon, value, label, numericTarget, format, delay }: {
+  icon: React.ElementType; value: string; label: string; numericTarget?: number; format?: (n: number) => string; delay?: number;
+}) {
+  const { count, ref } = useAnimatedCounter(numericTarget ?? 0, 2200);
+  return (
+    <div ref={ref}
+      className="bg-white mb-10 rounded-2xl border border-emerald-900/5 shadow-lg shadow-emerald-900/5 p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left hover:-translate-y-0.5 transition-all duration-300"
+      style={{ animationDelay: `${(delay ?? 0) * 100}ms` }}>
+      <div className="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-600/15 to-amber-500/15 flex items-center justify-center text-[#1f5c3d]">
+        <Icon className="text-xl" />
+      </div>
+      <div>
+        <p className="text-2xl sm:text-3xl font-bold text-[#0f3524]">
+          {numericTarget !== undefined ? (format ? format(count) : count.toLocaleString()) : value}
+        </p>
+        <p className="text-xs sm:text-sm text-zinc-500 font-medium">{label}</p>
+      </div>
+    </div>
+  );
+}
+
 function Stats() {
   const stats = [
-    { icon: FaLeaf, value: "30,000+", label: "Bottles Delivered" },
-    { icon: FaStar, value: "4.9/5", label: "Verified Rating" },
-    { icon: FaAward, value: "100%", label: "Pure & Natural" },
-    { icon: FaHandHoldingHeart, value: "24hr", label: "Fresh-Pressed" },
+    { icon: FaLeaf, value: "30,000+", label: "Bottles Delivered", numericTarget: 30000, format: (n: number) => `${n.toLocaleString()}+` },
+    { icon: FaStar, value: "4.9/5", label: "Verified Rating", numericTarget: 49, format: (n: number) => `${(n / 10).toFixed(1)}/5` },
+    { icon: FaAward, value: "100%", label: "Pure & Natural", numericTarget: 100, format: (n: number) => `${n}%` },
+    { icon: FaHandHoldingHeart, value: "24hr", label: "Fresh-Pressed", numericTarget: 24, format: (n: number) => `${n}hr` },
   ];
   return (
     <section className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mb-6">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((s, i) => (
-          <div key={s.label}
-            className="bg-white mb-10 rounded-2xl border border-emerald-900/5 shadow-lg shadow-emerald-900/5 p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left hover:-translate-y-0.5 transition-all duration-300">
-            <div className="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-600/15 to-amber-500/15 flex items-center justify-center text-[#1f5c3d]">
-              <s.icon className="text-xl" />
-            </div>
-            <div>
-              <p className="text-2xl sm:text-3xl font-bold text-[#0f3524]">{s.value}</p>
-              <p className="text-xs sm:text-sm text-zinc-500 font-medium">{s.label}</p>
-            </div>
-          </div>
+          <StatItem key={s.label} icon={s.icon} value={s.value} label={s.label}
+            numericTarget={s.numericTarget} format={s.format} delay={i} />
         ))}
       </div>
     </section>
@@ -448,6 +552,8 @@ function Reviews() {
     { name: "Hassan A.", city: "Multan", stars: 4, title: "Premium quality, quick delivery", text: "Arrived in two days, beautifully packed with a glass dropper. My dandruff has calmed down a lot. Quality feels premium." },
     { name: "Fatima Z.", city: "Rawalpindi", stars: 5, title: "Trustworthy brand", text: "Love that every batch is lab tested and you can see the certificate. Rare to find this level of transparency in hair care." },
   ];
+  const slider = useReviewSlider(reviews.length);
+
   return (
     <section id="reviews" className="relative py-20 lg:py-28 overflow-hidden bg-[#fbf8f1]">
       <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[24rem] rounded-full bg-emerald-100/40 blur-3xl" />
@@ -462,29 +568,71 @@ function Reviews() {
           <span className="ml-2 text-sm font-bold text-[#14241b]">4.9 · {product.reviews.toLocaleString()} verified reviews</span>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.map((r, i) => (
-            <div key={r.name}
-              className="relative rounded-3xl bg-white border border-emerald-900/8 p-7 shadow-sm hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-0.5 transition-all duration-300">
-              <FaQuoteLeft className="absolute top-6 right-6 text-emerald-100 text-4xl" />
-              <div className="flex items-center gap-1 text-amber-500 mb-4">
-                {[...Array(5)].map((_, s) => (
-                  <FaStar key={s} className={`text-sm ${s < r.stars ? "" : "text-zinc-200"}`} />
-                ))}
-              </div>
-              <h3 className="font-bold text-[#14241b] mb-2">{r.title}</h3>
-              <p className="text-sm text-zinc-500 leading-relaxed mb-6">&quot;{r.text}&quot;</p>
-              <div className="flex items-center gap-3 border-t border-emerald-900/5 pt-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1f5c3d] to-[#2e7d57] text-white flex items-center justify-center font-bold text-sm">
-                  {r.name.charAt(0)}
+        {/* Slider container */}
+        <div className="mt-14 relative"
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
+        >
+          {/* Navigation arrows */}
+          <button onClick={slider.prev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-20 w-10 h-10 rounded-full bg-white border border-emerald-900/10 shadow-lg flex items-center justify-center text-[#1f5c3d] hover:bg-emerald-50 hover:-translate-y-1/2 transition-all active:scale-90 hidden md:flex"
+            aria-label="Previous reviews">
+            <FaChevronLeft size={14} />
+          </button>
+          <button onClick={slider.next}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-20 w-10 h-10 rounded-full bg-white border border-emerald-900/10 shadow-lg flex items-center justify-center text-[#1f5c3d] hover:bg-emerald-50 hover:-translate-y-1/2 transition-all active:scale-90 hidden md:flex"
+            aria-label="Next reviews">
+            <FaChevronRight size={14} />
+          </button>
+
+          {/* Slider track */}
+          <div className="overflow-hidden rounded-3xl mx-6 md:mx-0"
+            onTouchStart={slider.handleTouchStart}
+            onTouchMove={slider.handleTouchMove}
+            onTouchEnd={slider.handleTouchEnd}>
+            <div className={`reviews-slider ${slider.dragging ? "dragging" : ""}`}
+              style={{
+                transform: `translateX(calc(-${slider.current * 100}%${slider.dragging ? ` + ${slider.touchDelta}px` : ""}))`,
+              }}>
+              {reviews.map((r, i) => (
+                <div key={r.name}
+                  className="w-full sm:w-1/2 lg:w-1/3 shrink-0 px-3 py-1">
+                  <div className="relative rounded-3xl bg-white border border-emerald-900/8 p-7 shadow-sm hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-0.5 transition-all duration-300 h-full">
+                    <FaQuoteLeft className="absolute top-6 right-6 text-emerald-100 text-4xl" />
+                    <div className="flex items-center gap-1 text-amber-500 mb-4">
+                      {[...Array(5)].map((_, s) => (
+                        <FaStar key={s} className={`text-sm ${s < r.stars ? "" : "text-zinc-200"}`} />
+                      ))}
+                    </div>
+                    <h3 className="font-bold text-[#14241b] mb-2">{r.title}</h3>
+                    <p className="text-sm text-zinc-500 leading-relaxed mb-6">&quot;{r.text}&quot;</p>
+                    <div className="flex items-center gap-3 border-t border-emerald-900/5 pt-4">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1f5c3d] to-[#2e7d57] text-white flex items-center justify-center font-bold text-sm">
+                        {r.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-[#14241b]">{r.name}</p>
+                        <p className="text-xs text-zinc-400">{r.city} · Verified Buyer</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-bold text-[#14241b]">{r.name}</p>
-                  <p className="text-xs text-zinc-400">{r.city} · Verified Buyer</p>
-                </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Dots navigation */}
+          <div className="flex justify-center gap-2 mt-8">
+            {Array.from({ length: slider.getMaxSlide() + 1 }).map((_, i) => (
+              <button key={i} onClick={() => slider.goTo(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  slider.current === i
+                    ? "bg-[#1f5c3d] w-7"
+                    : "bg-emerald-900/15 hover:bg-emerald-900/30"
+                }`}
+                aria-label={`Go to review page ${i + 1}`} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
