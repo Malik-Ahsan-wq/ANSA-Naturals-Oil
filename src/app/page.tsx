@@ -165,7 +165,7 @@ function Stats() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((s, i) => (
           <div key={s.label}
-            className="bg-white rounded-2xl border border-emerald-900/5 shadow-lg shadow-emerald-900/5 p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left hover:-translate-y-0.5 transition-all duration-300">
+            className="bg-white mb-10 rounded-2xl border border-emerald-900/5 shadow-lg shadow-emerald-900/5 p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left hover:-translate-y-0.5 transition-all duration-300">
             <div className="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-600/15 to-amber-500/15 flex items-center justify-center text-[#1f5c3d]">
               <s.icon className="text-xl" />
             </div>
@@ -684,8 +684,8 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#fbf8f1] overflow-x-hidden">
       <Hero />
-      <Stats />
       <About />
+      <Stats />
       <Benefits />
       <Ingredients />
       <HowToUse />
