@@ -20,7 +20,7 @@ const product = products[0];
 /* ------------------------------ Section heading ----------------------------- */
 function SectionHeading({ eyebrow, title, sub, light }: { eyebrow: string; title: ReactNode; sub?: string; light?: boolean }) {
   return (
-    <div className="max-w-2xl mx-auto text-center" data-aos="fade-up">
+    <div className="max-w-2xl mx-auto text-center">
       <p className="section-eyebrow flex items-center justify-center gap-2 mb-3">
         <span className="h-px w-8 bg-gold inline-block" />{eyebrow}<span className="h-px w-8 bg-gold inline-block" />
       </p>
@@ -65,26 +65,26 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 pb-16 lg:pb-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
         {/* Left */}
         <div className="text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/70 border border-emerald-200 px-4 py-1.5 shadow-sm mb-6" data-aos="fade-up">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/70 border border-emerald-200 px-4 py-1.5 shadow-sm mb-6">
             <FaLeaf className="text-emerald-700" />
             <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-emerald-800">
               100% Pure · Lab-Tested · Organic
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-[4.2rem] font-bold leading-[1.05] text-[#0f3524]" data-aos="fade-up" data-aos-delay="80">
+          <h1 className="text-4xl sm:text-6xl lg:text-[4.2rem] font-bold leading-[1.05] text-[#0f3524]">
             Nature&apos;s Most Potent{" "}
             <span className="text-shimmer italic">Hair Oil</span>
           </h1>
 
-          <p className="mt-5 text-base sm:text-lg text-zinc-600 leading-relaxed max-w-xl mx-auto lg:mx-0" data-aos="fade-up" data-aos-delay="160">
+          <p className="mt-5 text-base sm:text-lg text-zinc-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
             Hand-harvested black seed, cold-pressed within 24 hours and bottled in
             UV-protected glass — {brand.tagline.toLowerCase()} nourishes roots and
             revives shine without heat damage or harsh chemicals.
           </p>
 
           {/* Rating + price */}
-          <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-4" data-aos="fade-up" data-aos-delay="240">
+          <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-4">
             <div className="flex items-center gap-1 text-amber-500">
               {[...Array(5)].map((_, i) => <FaStar key={i} className="text-sm" />)}
               <span className="ml-2 text-sm font-bold text-[#14241b]">4.9/5</span>
@@ -98,7 +98,7 @@ function Hero() {
           </div>
 
           {/* CTAs */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4" data-aos="fade-up" data-aos-delay="320">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <div className="flex items-center gap-3 rounded-full bg-white border border-emerald-200 shadow-sm px-3 py-2">
               <button onClick={() => setQty(q => Math.max(1, q - 1))} className="w-9 h-9 rounded-full bg-[#1f5c3d]/10 hover:bg-[#1f5c3d]/20 text-[#1f5c3d] flex items-center justify-center transition-all active:scale-90" aria-label="Decrease quantity">
                 <FaMinus size={12} />
@@ -117,12 +117,12 @@ function Hero() {
             </button>
           </div>
 
-          <p className="mt-4 text-xs text-zinc-400 flex items-center justify-center lg:justify-start gap-1.5" data-aos="fade-up" data-aos-delay="400">
+          <p className="mt-4 text-xs text-zinc-400 flex items-center justify-center lg:justify-start gap-1.5">
             <FaTruck className="text-emerald-600" /> Free nationwide delivery on every order · Ships within 24 hours
           </p>        </div>
 
         {/* Right — product */}
-        <div className="relative flex justify-center lg:justify-end" data-aos="zoom-in" data-aos-delay="200">
+        <div className="relative flex justify-center lg:justify-end">
           <ProductBottle className="w-[70%] max-w-md mx-auto lg:mr-8" />
         </div>
       </div>
@@ -164,7 +164,7 @@ function Stats() {
     <section className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mb-6">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((s, i) => (
-          <div key={s.label} data-aos="fade-up" data-aos-delay={i * 60}
+          <div key={s.label}
             className="bg-white rounded-2xl border border-emerald-900/5 shadow-lg shadow-emerald-900/5 p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center sm:text-left hover:-translate-y-0.5 transition-all duration-300">
             <div className="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-emerald-600/15 to-amber-500/15 flex items-center justify-center text-[#1f5c3d]">
               <s.icon className="text-xl" />
@@ -192,7 +192,7 @@ function About() {
     <section id="about" className="relative pt-24 lg:pt-32 pb-20 lg:pb-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* Visual */}
-        <div className="relative order-2 lg:order-1" data-aos="fade-right">
+        <div className="relative order-2 lg:order-1">
           <div className="absolute -top-8 -left-8 w-40 h-40 rounded-full bg-emerald-100/60 blur-2xl" />
           <div className="relative mx-auto max-w-md">
             <div className="aspect-[3/4] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#1f5c3d] via-[#2e7d57] to-[#123e29] p-6 sm:p-8 flex items-center justify-center animate-blob shadow-2xl shadow-emerald-900/30">
@@ -215,16 +215,16 @@ function About() {
         {/* Copy */}
         <div className="order-1 lg:order-2">
           <p className="section-eyebrow flex items-center gap-2 mb-3"><span className="h-px w-8 bg-gold inline-block" />The Essence of Nature</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#14241b]" data-aos="fade-up">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-[#14241b]">
             One Oil. A Thousand Years of <span className="text-shimmer">Natural Hair Wisdom.</span>
           </h2>
-          <p className="mt-5 text-zinc-600 leading-relaxed" data-aos="fade-up" data-aos-delay="80">
+          <p className="mt-5 text-zinc-600 leading-relaxed">
             For centuries, black seed — the &quot;blessed seed&quot; of traditional beauty — has been
             treasured across civilisations for its remarkable ability to nourish hair and scalp.
             At ANSA Naturals, we honour that heritage with modern precision: every bottle is a
             commitment to purity, potency and ethical sourcing.
           </p>
-          <ul className="mt-7 space-y-3.5" data-aos="fade-up" data-aos-delay="160">
+          <ul className="mt-7 space-y-3.5">
             {points.map((p) => (
               <li key={p} className="flex items-start gap-3 text-sm sm:text-base text-zinc-700">
                 <FaCheckCircle className="text-emerald-600 mt-0.5 shrink-0" />
@@ -232,7 +232,7 @@ function About() {
               </li>
             ))}
           </ul>
-          <div className="mt-8 flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="240">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link href="#why-us" className="inline-flex items-center gap-2 rounded-full bg-[#14241b] text-white px-7 py-3.5 text-sm font-bold hover:bg-[#1f5c3d] transition-all shadow-lg active:scale-95">
               Why Choose Us <FaArrowRight />
             </Link>
@@ -267,7 +267,7 @@ function Benefits() {
         />
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {benefits.map((b, i) => (
-            <div key={b.title} data-aos="fade-up" data-aos-delay={(i % 3) * 80}
+            <div key={b.title}
               className="group relative overflow-hidden rounded-3xl border border-emerald-900/8 bg-gradient-to-b from-[#fbfcf8] to-white p-7 hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-1 transition-all duration-300">
               <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-emerald-100/50 group-hover:scale-150 transition-transform duration-500" />
               <div className="relative">
@@ -301,14 +301,14 @@ function Ingredients() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
         <div>
           <p className="section-eyebrow flex items-center gap-2 mb-3"><span className="h-px w-8 bg-gold inline-block" />What&apos;s Inside</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white" data-aos="fade-up">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
             Power in <span className="text-[#e6c277]">Every Single Drop</span>
           </h2>
-          <p className="mt-5 text-emerald-100/70 leading-relaxed max-w-lg" data-aos="fade-up" data-aos-delay="80">
+          <p className="mt-5 text-emerald-100/70 leading-relaxed max-w-lg">
             We refuse to compromise. Each bottle contains only what nature intended —
             nothing synthetic, nothing diluted, nothing lost to heat.
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-4 max-w-md" data-aos="fade-up" data-aos-delay="160">
+          <div className="mt-8 grid grid-cols-2 gap-4 max-w-md">
             {[
               { v: "40°C", l: "Max press temp" },
               { v: "0", l: "Additives" },
@@ -323,7 +323,7 @@ function Ingredients() {
           </div>
         </div>
 
-        <div className="space-y-6" data-aos="fade-left">
+        <div className="space-y-6">
           {rows.map((r, i) => (
             <div key={r.name}>
               <div className="flex justify-between items-baseline mb-2">
@@ -332,7 +332,7 @@ function Ingredients() {
               </div>
               <div className="h-2.5 rounded-full bg-white/10 overflow-hidden">
                 <div className="h-full rounded-full bg-gradient-to-r from-amber-400 to-[#e6c277] transition-all duration-1000"
-                  style={{ width: `${r.pct}%` }} data-aos="fade-right" data-aos-delay={i * 80} />
+                  style={{ width: `${r.pct}%` }} />
               </div>
               <p className="mt-1.5 text-xs text-emerald-100/50">{r.note}</p>
             </div>
@@ -361,7 +361,7 @@ function HowToUse() {
         />
         <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
           {steps.map((s, i) => (
-            <div key={s.n} data-aos="fade-up" data-aos-delay={i * 80}
+            <div key={s.n}
               className="relative rounded-3xl bg-white border border-emerald-900/8 p-8 hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-300 group">
               <div className="flex items-center justify-between mb-6">
                 <span className="text-4xl font-bold text-emerald-100 group-hover:text-emerald-200 transition-colors">{s.n}</span>
@@ -397,7 +397,7 @@ function WhyChooseUs() {
         />
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f, i) => (
-            <div key={f.title} data-aos="fade-up" data-aos-delay={(i % 3) * 80}
+            <div key={f.title}
               className="flex gap-4 rounded-3xl border border-emerald-900/8 bg-[#fbfcf8] p-6 hover:border-emerald-600/30 hover:bg-emerald-50/50 transition-all duration-300 group">
               <div className="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-[#1f5c3d] to-[#2e7d57] text-white flex items-center justify-center shadow-md shadow-emerald-900/15 group-hover:scale-110 transition-transform">
                 <f.icon />
@@ -411,7 +411,7 @@ function WhyChooseUs() {
         </div>
 
         {/* Comparison */}
-        <div className="mt-16 max-w-3xl mx-auto" data-aos="fade-up">
+        <div className="mt-16 max-w-3xl mx-auto">
           <div className="rounded-3xl border border-emerald-900/8 bg-[#fbfcf8] overflow-hidden shadow-lg shadow-emerald-900/5">
             <div className="grid grid-cols-3 text-center text-xs sm:text-sm font-bold py-4 bg-[#0f3524] text-white px-4">
               <span className="text-left">Quality</span>
@@ -457,14 +457,14 @@ function Reviews() {
           title={<>Loved by <span className="text-shimmer">Thousands</span></>}
           sub="Real results from real people who made ANSA part of their hair-care routine."
         />
-        <div className="mt-6 flex justify-center gap-1 text-amber-500" data-aos="fade-up">
+        <div className="mt-6 flex justify-center gap-1 text-amber-500">
           {[...Array(5)].map((_, i) => <FaStar key={i} className="text-lg" />)}
           <span className="ml-2 text-sm font-bold text-[#14241b]">4.9 · {product.reviews.toLocaleString()} verified reviews</span>
         </div>
 
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((r, i) => (
-            <div key={r.name} data-aos="fade-up" data-aos-delay={(i % 3) * 80}
+            <div key={r.name}
               className="relative rounded-3xl bg-white border border-emerald-900/8 p-7 shadow-sm hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-0.5 transition-all duration-300">
               <FaQuoteLeft className="absolute top-6 right-6 text-emerald-100 text-4xl" />
               <div className="flex items-center gap-1 text-amber-500 mb-4">
@@ -515,7 +515,7 @@ function Faq() {
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} data-aos="fade-up" data-aos-delay={i * 40}
+              <div key={f.q}
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? "border-emerald-600/30 bg-emerald-50/40 shadow-lg shadow-emerald-900/5" : "border-emerald-900/8 bg-[#fbfcf8] hover:border-emerald-600/20"}`}>
                 <button onClick={() => setOpen(isOpen ? -1 : i)} className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left">
                   <span className="font-semibold text-[#14241b] text-sm sm:text-base">{f.q}</span>
@@ -575,14 +575,14 @@ function Contact() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
         <div>
           <p className="section-eyebrow flex items-center gap-2 mb-3"><span className="h-px w-8 bg-gold inline-block" />Get In Touch</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white" data-aos="fade-up">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
             We&apos;d Love to <span className="text-[#e6c277]">Hear From You</span>
           </h2>
-          <p className="mt-5 text-emerald-100/70 leading-relaxed max-w-lg" data-aos="fade-up" data-aos-delay="80">
+          <p className="mt-5 text-emerald-100/70 leading-relaxed max-w-lg">
             Questions about the oil, your order, or wholesale partnerships? Our hair-care team
             responds within a few hours, seven days a week.
           </p>
-          <div className="mt-8 space-y-4" data-aos="fade-up" data-aos-delay="160">
+          <div className="mt-8 space-y-4">
             {[
               { icon: FaWhatsapp, label: "WhatsApp", value: brand.phone },
               { icon: FaEnvelope, label: "Email", value: brand.email },
@@ -601,7 +601,7 @@ function Contact() {
           </div>
         </div>
 
-        <form onSubmit={submit} className="rounded-[2rem] bg-white/95 backdrop-blur p-6 sm:p-9 shadow-2xl space-y-4" data-aos="fade-up">
+        <form onSubmit={submit} className="rounded-[2rem] bg-white/95 backdrop-blur p-6 sm:p-9 shadow-2xl space-y-4">
           <h3 className="text-xl font-bold text-[#14241b] mb-2">Send a Message</h3>
           <div>
             <label className="block text-xs font-semibold text-zinc-600 mb-1.5">Your Name</label>
@@ -647,7 +647,7 @@ function FinalCta() {
     <section className="relative py-20 lg:py-24 bg-[#fbf8f1] overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#0f3524] to-transparent" />
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#1f5c3d] via-[#2e7d57] to-[#123e29] p-8 sm:p-14 text-center shadow-2xl shadow-emerald-900/30" data-aos="zoom-in">
+        <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#1f5c3d] via-[#2e7d57] to-[#123e29] p-8 sm:p-14 text-center shadow-2xl shadow-emerald-900/30">
           <div className="absolute top-0 right-0 w-72 h-72 bg-amber-300/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3" />
           <Leaf variant="a" className="absolute -left-4 bottom-0 w-24 h-24 text-emerald-200/10 rotate-12" />
           <OilDrop className="absolute right-10 top-8 w-8 h-10 text-amber-300/30" />

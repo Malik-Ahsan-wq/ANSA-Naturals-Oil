@@ -3,7 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AOSInit from "@/components/AOSInit";
+
 import { CartProvider } from "@/context/CartContext";
 import CartSidebar from "@/components/CartSidebar";
 import { brand } from "@/data/brand";
@@ -89,7 +89,7 @@ export default function RootLayout({
       </head>
       <body className={`${fontSans.variable} ${fontSerif.variable} antialiased`}>
         <CartProvider>
-          <AOSInit />
+
           <Navbar />
           <div className="pt-16">{children}</div>
           <Footer />
