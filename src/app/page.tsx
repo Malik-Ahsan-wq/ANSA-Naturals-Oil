@@ -564,15 +564,7 @@ function HowToUse() {
   ];
   return (
     <section className="relative py-20 lg:py-28 bg-[#fafafa] overflow-hidden">
-      {/* Background before/after images with light opacity */}
-      <div className="absolute inset-0 opacity-[0.12] pointer-events-none">
-        <img
-          src="/assets/before-after-results.jpg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          aria-hidden="true"
-        />
-      </div>
+
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
