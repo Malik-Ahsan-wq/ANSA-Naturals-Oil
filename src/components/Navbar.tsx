@@ -42,11 +42,11 @@ export default function Navbar() {
   }, []);
 
   return (
-<header
+    <header
       className={`fixed top-0 left-0 right-0 z-[100] w-full transition-all duration-300 ${
         scrolled
-          ? "bg-[#fbf8f1]/95 backdrop-blur-lg border-b border-emerald-900/10 shadow-md"
-          : "bg-[#fbf8f1]/60 backdrop-blur-md border-b border-emerald-900/5"
+          ? "bg-[#fafafa]/95 backdrop-blur-lg border-b border-zinc-200 shadow-md"
+          : "bg-[#fafafa]/60 backdrop-blur-md border-b border-zinc-100"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -92,8 +92,8 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={href}
-                  className={`relative text-sm font-semibold transition-colors duration-300 hover:text-[#1f5c3d] ${
-                    isActive ? "text-[#1f5c3d] font-bold" : "text-zinc-600"
+                  className={`relative text-sm font-semibold transition-colors duration-300 hover:text-[#111111] ${
+                    isActive ? "text-[#111111] font-bold" : "text-zinc-600"
                   }`}
                 >
                   {link.label}
@@ -106,7 +106,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/products"
-              className="hidden lg:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] px-6 py-2.5 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
+              className="hidden lg:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#111111] to-[#333333] px-6 py-2.5 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
             >
               <FaLeaf />
               Buy Now
@@ -114,7 +114,7 @@ export default function Navbar() {
 
             <Link
               href="/admin/dashboard"
-              className="hidden sm:inline-flex items-center justify-center text-lg text-zinc-600 transition-colors duration-300 hover:text-[#1f5c3d]"
+              className="hidden sm:inline-flex items-center justify-center text-lg text-zinc-600 transition-colors duration-300 hover:text-[#111111]"
               aria-label="Admin"
             >
               <FaUserShield />
@@ -122,7 +122,7 @@ export default function Navbar() {
 
             <button
               onClick={openCart}
-              className="relative rounded-full p-2 text-zinc-700 transition-colors duration-300 hover:text-[#1f5c3d]"
+              className="relative rounded-full p-2 text-zinc-700 transition-colors duration-300 hover:text-[#111111]"
               aria-label="Open cart"
             >
               <FaShoppingCart className="text-xl" />
@@ -136,7 +136,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-zinc-700 transition-colors duration-300 lg:hidden hover:text-[#1f5c3d]"
+              className="p-2 text-zinc-700 transition-colors duration-300 lg:hidden hover:text-[#111111]"
               aria-label="Toggle menu"
             >
               {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={26} />}
@@ -169,9 +169,9 @@ export default function Navbar() {
                     key={link.label}
                     href={href}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-2 px-5 py-3.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-emerald-50 hover:text-[#1f5c3d]"
+                    className="flex items-center gap-2 px-5 py-3.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-[#111111]"
                   >
-                    <FaLeaf className="text-xs text-[#1f5c3d]/40" />
+                    <FaLeaf className="text-xs text-zinc-400" />
                     {link.label}
                   </a>
                 );
@@ -181,7 +181,7 @@ export default function Navbar() {
                 <Link
                   href="/products"
                   onClick={() => setIsOpen(false)}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] py-3 text-sm font-bold text-white shadow-lg"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#111111] to-[#333333] py-3 text-sm font-bold text-white shadow-lg"
                 >
                   <FaShoppingCart />
                   Shop Now

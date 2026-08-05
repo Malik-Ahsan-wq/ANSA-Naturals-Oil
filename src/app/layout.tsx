@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     apple: brand.logo,
   },
   other: {
-    "theme-color": "#1f5c3d",
+    "theme-color": "#000000",
   },
 };
 

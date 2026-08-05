@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbf8f1;
-  --foreground: #14241b;
-  --brand: #1f5c3d;
-  --brand-deep: #0f3524;
+  --background: #fafafa;
+  --foreground: #111111;
+  --brand: #000000;
+  --brand-deep: #1a1a1a;
   --gold: #c08a2e;
-  --cream: #f7f2e7;
+  --cream: #f5f5f5;
 }
 
 @theme inline {
@@ -16,8 +16,8 @@
   --color-brand-deep: var(--brand-deep);
   --color-gold: var(--gold);
   --color-cream: var(--cream);
-  --color-leaf: #2e7d57;
-  --color-sage: #eaf3ec;
+  --color-leaf: #333333;
+  --color-sage: #f0f0f0;
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-geist-mono);
 }
@@ -122,7 +122,7 @@ h1, h2, h3, h4, .font-display {
 }
 
 .text-shimmer {
-  background: linear-gradient(90deg, #1f5c3d 0%, #2e7d57 30%, #c08a2e 50%, #2e7d57 70%, #1f5c3d 100%);
+  background: linear-gradient(90deg, #000000 0%, #333333 30%, #c08a2e 50%, #333333 70%, #000000 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -147,5 +147,5 @@ h1, h2, h3, h4, .font-display {
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 .accent-ring {
-  box-shadow: 0 0 0 6px rgba(46, 125, 87, 0.14);
+  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.14);
 }

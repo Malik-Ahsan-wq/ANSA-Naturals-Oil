@@ -37,8 +37,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#0c2b1d] text-emerald-100/70 pt-16 pb-8 overflow-hidden">
-      <div className="absolute -top-20 -right-20 w-72 h-72 bg-emerald-600/10 rounded-full blur-3xl" />
+    <footer className="relative bg-[#111111] text-zinc-100/70 pt-16 pb-8 overflow-hidden">
+      <div className="absolute -top-20 -right-20 w-72 h-72 bg-zinc-700/10 rounded-full blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12">
@@ -62,7 +62,7 @@ export default function Footer() {
                 { icon: FaWhatsapp, href: whatsappLink("Hello ANSA Naturals!"), label: "WhatsApp" },
               ].map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-emerald-100/80 hover:bg-[#2e7d57] hover:border-[#2e7d57] hover:text-white transition-all">
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-100/80 hover:bg-zinc-600 hover:border-zinc-600 hover:text-white transition-all">
                   <s.icon className="text-lg" />
                 </a>
               ))}
@@ -126,7 +126,7 @@ export default function Footer() {
               <button
                 type="submit"
                 disabled={state === "submitting"}
-                className="rounded-xl bg-gradient-to-r from-[#1f5c3d] to-[#2e7d57] text-white py-3 text-sm font-bold hover:shadow-lg hover:shadow-emerald-900/40 transition-all active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
+                className="rounded-xl bg-gradient-to-r from-[#111111] to-[#333333] text-white py-3 text-sm font-bold hover:shadow-lg hover:shadow-zinc-900/40 transition-all active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
               >
                 {state === "submitting" ? "Subscribing…" : "Subscribe"}
               </button>

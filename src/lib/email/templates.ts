@@ -2,9 +2,9 @@ import { brand } from "@/data/brand";
 import { MailOptions } from "@/lib/mailer";
 
 /* ----------------------------- Brand palette ----------------------------- */
-const GREEN_DARK = "#0f3524";
-const GREEN = "#1f5c3d";
-const GREEN_LIGHT = "#2e7d57";
+const GREEN_DARK = "#1a1a1a";
+const GREEN = "#000000";
+const GREEN_LIGHT = "#333333";
 const GOLD = "#e6c277";
 const CREAM = "#fbf8f1";
 const INK = "#14241b";
