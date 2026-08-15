@@ -17,7 +17,7 @@ export default function ProductBottle({ className }: { className?: string }) {
       <div className="relative z-10 w-full max-w-[360px] mx-auto" style={{ aspectRatio: "408 / 612" }}>
         <Image
           src={PRODUCT_IMG}
-          alt="ANSA Naturals Pure Cold-Pressed Black Seed Oil bottle"
+          alt="ANSA Naturals Pure Organic Oil with Organic Ingredients bottle"
           fill
           sizes="(max-width: 768px) 60vw, 30vw"
           priority

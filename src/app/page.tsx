@@ -267,32 +267,13 @@ function StatItem({ icon: Icon, value, label, numericTarget, format, delay }: {
   );
 }
 
-function Stats() {
-  const stats = [
-    { icon: FaLeaf, value: "30,000+", label: "Bottles Delivered", numericTarget: 30000, format: (n: number) => `${n.toLocaleString()}+` },
-    { icon: FaStar, value: "4.9/5", label: "Verified Rating", numericTarget: 49, format: (n: number) => `${(n / 10).toFixed(1)}/5` },
-    { icon: FaAward, value: "100%", label: "Pure & Natural", numericTarget: 100, format: (n: number) => `${n}%` },
-    { icon: FaHandHoldingHeart, value: "24hr", label: "Fresh-Pressed", numericTarget: 24, format: (n: number) => `${n}hr` },
-  ];
-  return (
-    <section className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mb-6">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        {stats.map((s, i) => (
-          <StatItem key={s.label} icon={s.icon} value={s.value} label={s.label}
-            numericTarget={s.numericTarget} format={s.format} delay={i} />
-        ))}
-      </div>
-    </section>
-  );
-}
 
 /* --------------------------------- ABOUT --------------------------------- */
 function About() {
   const points = [
     "Hand-selected Nigella sativa seeds from pesticide-free farms",
-    "Cold-pressed below 40°C to preserve thymoquinone & nutrients",
     "Unrefined, unfiltered — nothing added, nothing taken away",
-    "Bottled in amber glass within 24 hours of pressing",
+   
   ];
   return (
     <section id="about" className="relative pt-24 lg:pt-32 pb-20 lg:pb-28">
@@ -311,10 +292,7 @@ function About() {
                 <p className="text-xs text-zinc-500">Traceable Purity</p>
               </div>
             </div>
-            <div className="absolute -top-4 -left-2 bg-white rounded-2xl shadow-xl border border-zinc-100 px-5 py-3 flex items-center gap-2 animate-float-delay">
-              <FaAward className="text-gold text-xl" />
-              <p className="text-xs font-bold text-[#111111]">Third-Party<br />Lab Certified</p>
-            </div>
+        
           </div>
         </div>
 
@@ -325,10 +303,8 @@ function About() {
             One Oil. A Thousand Years of <span className="text-shimmer">Natural Hair Wisdom.</span>
           </h2>
           <p className="mt-5 text-zinc-600 leading-relaxed">
-            For centuries, black seed — the &quot;blessed seed&quot; of traditional beauty — has been
-            treasured across civilisations for its remarkable ability to nourish hair and scalp.
-            At ANSA Naturals, we honour that heritage with modern precision: every bottle is a
-            commitment to purity, potency and ethical sourcing.
+         Nature has always offered powerful ingredients for healthy, beautiful hair — from nourishing botanical oils to carefully selected herbs and plant extracts. At ANSA Naturals, we bring these natural elements together with modern care, creating a hair oil focused on nourishment, strength and scalp wellness. Every bottle reflects our commitment to quality, purity and thoughtfully sourced ingredients.
+
           </p>
           <ul className="mt-7 space-y-3.5">
             {points.map((p) => (
@@ -420,7 +396,7 @@ function HairFallProblem() {
             <p className="mt-5 text-zinc-400 leading-relaxed max-w-lg">
               Millions suffer from excessive hair fall, thinning, and receding hairlines. 
               The cause? Heat-processed oils that destroy nutrients. The solution? 
-              <span className="text-white font-semibold"> 100% organic, cold-pressed black seed oil</span> that 
+              <span className="text-white font-semibold"> 100% organic</span> that 
               actually works.
             </p>
 
@@ -503,7 +479,6 @@ function Ingredients() {
     { name: "Thymoquinone", note: "The active compound for hair health", pct: "80" },
     { name: "Omega 3, 6, 9", note: "Essential fatty acids for the scalp", pct: "84" },
     { name: "Vitamin E & B-Complex", note: "Natural antioxidant support", pct: "70" },
-    { name: "Cold-Pressed Purity", note: "Nothing added, nothing removed", pct: "100" },
   ];
   return (
     <section id="ingredients" className="relative py-20 lg:py-28 overflow-hidden bg-[#111111]">
@@ -995,7 +970,6 @@ export default function Home() {
       <Hero />
       <About />
       <HairFallProblem />
-      <Stats />
       <Benefits />
       <Ingredients />
       <HowToUse />
