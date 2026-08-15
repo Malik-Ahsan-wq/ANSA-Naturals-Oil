@@ -51,7 +51,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
-              Pure, cold-pressed natural hair oil crafted with care — nature&apos;s most
+              Pure, organic natural hair oil crafted with care — nature&apos;s most
               potent elixir for stronger, shinier, healthier-looking hair.
             </p>
             <div className="flex items-center gap-3">

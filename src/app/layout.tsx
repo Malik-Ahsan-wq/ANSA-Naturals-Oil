@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   description: brand.description,
   keywords: [
-    "ANSA Naturals", "black seed oil", "Organic hair oil", "pure natural oil",
+    "ANSA Naturals", "organic oil", "Organic hair oil", "pure natural oil",
     "kalonji oil", "organic hair oil", "natural hair oil", "hair growth oil", "hair care oil",
   ],
   metadataBase: new URL("https://ansanaturals.com"),

@@ -17,7 +17,7 @@ export default function CartPage() {
             <FaLeaf className="text-5xl text-zinc-200" />
           </div>
           <h2 className="text-2xl font-bold text-[#111111]">Your cart is empty</h2>
-          <p className="text-zinc-500 text-sm">Add our pure black seed oil to begin your wellness journey.</p>
+          <p className="text-zinc-500 text-sm">Add our pure organic oil to begin your wellness journey.</p>
           <Link href="/products" className="inline-block bg-gradient-to-r from-[#111111] to-[#333333] text-white px-8 py-3.5 rounded-xl font-bold hover:shadow-lg hover:shadow-zinc-900/20 transition-all active:scale-95 text-sm">
             Shop the Oil
           </Link>

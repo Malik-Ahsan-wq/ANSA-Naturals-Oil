@@ -9,7 +9,7 @@ const values = [
   {
     icon: <FaLeaf className="text-zinc-700" size={24} />,
     title: "Radical Purity",
-    description: "One ingredient, nothing else. Our oil is single-origin black seed, pressed and bottled as nature intended."
+    description: "Crafted with organic ingredients, nothing else. Our oil is bottled as nature intended."
   },
   {
     icon: <FaSeedling className="text-zinc-700" size={24} />,
@@ -62,7 +62,7 @@ export default function AboutPage() {
               <div className="text-center text-white">
                 <OilDrop className="w-16 h-20 text-amber-300/80 mx-auto mb-4" />
                 <p className="font-serif italic text-2xl">Since 2016</p>
-                <p className="mt-2 text-emerald-100/70 max-w-[220px] mx-auto text-sm">A decade of perfecting the art of cold-pressed purity.</p>
+                <p className="mt-2 text-emerald-100/70 max-w-[220px] mx-auto text-sm">A decade of perfecting the art of organic purity.</p>
               </div>
             </div>
             <div className="absolute -bottom-6 -right-4 bg-white rounded-2xl shadow-xl border border-zinc-100 px-6 py-4">

@@ -82,7 +82,7 @@ export default function CheckoutPage() {
           ) : (
             <>
               <h2 className="text-2xl font-bold text-[#111111]">Your cart is empty</h2>
-              <p className="text-sm text-zinc-500">Add our pure cold-pressed hair oil to begin your ritual.</p>
+              <p className="text-sm text-zinc-500">Add our pure organic hair oil to begin your ritual.</p>
             </>
           )}
         </div>

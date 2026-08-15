@@ -171,7 +171,7 @@ function Hero() {
           </h1>
 
           <p className="mt-5 text-base sm:text-lg text-zinc-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            Hand-harvested black seed, cold-pressed within 24 hours and bottled in
+            Crafted with organic ingredients and bottled in
             UV-protected glass — {brand.tagline.toLowerCase()} nourishes roots and
             revives shine without heat damage or harsh chemicals.
           </p>
@@ -523,7 +523,7 @@ function Ingredients() {
               <p className="mt-1.5 text-xs text-zinc-100/50">{r.note}</p>
             </div>
           ))}
-          <p className="text-xs text-zinc-100/40 italic pt-2">*Values indicate concentration within the pure cold-pressed oil. Independent lab reports available on request.</p>
+          <p className="text-xs text-zinc-100/40 italic pt-2">*Values indicate concentration within the pure organic oil. Independent lab reports available on request.</p>
         </div>
       </div>
     </section>
@@ -569,7 +569,7 @@ function HowToUse() {
               Before & After <span className="text-shimmer">Transformations</span>
             </h3>
             <p className="mt-3 text-sm text-zinc-500 max-w-lg mx-auto">
-              See the real difference our cold-pressed black seed oil makes. 
+               See the real difference our organic oil makes.
               These are actual customer results after consistent use.
             </p>
           </div>
@@ -577,7 +577,7 @@ function HowToUse() {
           <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-zinc-900/10 border border-zinc-100">
             <Image
               src="/assets/before-after-results.jpg"
-              alt="Before and after hair transformation results using ANSA Naturals cold-pressed black seed oil"
+              alt="Before and after hair transformation results using ANSA Naturals organic oil"
               width={1400}
               height={900}
               className="w-full h-auto"
@@ -778,8 +778,8 @@ function Reviews() {
 /* ---------------------------------- FAQ ----------------------------------- */
 function Faq() {
   const faqs = [
-    { q: "Is the oil really 100% pure and natural?", a: "Yes. ANSA Naturals is single-origin, cold-pressed black seed hair oil with absolutely no fillers, carrier oils, preservatives or heat processing. Every batch ships with a third-party lab purity certificate." },
-    { q: "How is cold-pressing different from regular extraction?", a: "Most hair oils are heat-extracted or blended with cheap carriers, which destroys delicate nutrients. We press seeds slowly below 40°C, preserving thymoquinone, omega fatty acids and vitamin E at their full potency." },
+    { q: "Is the oil really 100% pure and natural?", a: "Yes. ANSA Naturals is crafted with organic ingredients, with absolutely no fillers, carrier oils, preservatives or heat processing. Every batch ships with a third-party lab purity certificate." },
+    { q: "What makes organic oils different?", a: "Most hair oils are heat-extracted or blended with cheap carriers, which destroys delicate nutrients. Our organic formula preserves natural nutrients at their full potency for healthier hair." },
     { q: "How should I use it on my hair?", a: "Warm a few drops and massage into the scalp for 3–5 minutes, then work through strands from roots to ends. Leave in for 30 minutes to overnight, then rinse with a gentle shampoo. Repeat 3–4 times a week." },
     { q: "Are there any side effects or allergies?", a: "Our oil is generally safe for most hair and skin types. If you have known seed allergies or a sensitive scalp, do a patch test before use and discontinue if irritation occurs." },
     { q: "How long does one bottle last and how do I store it?", a: "One 100 ml bottle lasts roughly 6–8 weeks of regular hair use. Store in a cool, dry place away from direct sunlight — the amber glass bottle is designed to protect the oil." },
@@ -941,7 +941,7 @@ function FinalCta() {
               Begin Your Journey to <span className="text-[#e6c277] italic">Naturally Beautiful Hair</span>
             </h2>
             <p className="mt-5 text-zinc-100/80 max-w-xl mx-auto leading-relaxed">
-              Join 30,000+ customers who made the switch to pure, cold-pressed natural hair oil.
+              Join 30,000+ customers who made the switch to pure, organic natural hair oil.
               Your hair will thank you.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
