@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Leaf from "./Leaf";
 
-const PRODUCT_IMG = "/assets/ansanaturalsheroimage.png";
+const PRODUCT_IMG = "/assets/ChatGPT_Image_Aug_17__2026__11_44_02_AM-removebg-preview.png";
 
 export default function ProductBottle({ className }: { className?: string }) {
   return (
