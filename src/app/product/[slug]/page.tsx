@@ -23,7 +23,7 @@ export default async function ProductDetail({ params }: Props) {
   if (!product) return notFound();
 
   const details = [
-    { icon: FaLeaf, title: "100% Pure", desc: "Crafted with organic ingredients, unrefined organic oil." },
+    { icon: FaLeaf, title: "100% Pure", desc: "Crafted with organic ingredients, unrefined organic hair oil." },
     { icon: FaShieldAlt, title: "Lab Tested", desc: "Third-party verified for thymoquinone purity." },
     { icon: FaTruck, title: "Free Shipping", desc: "Nationwide delivery, dispatched within 24 hours." },
     { icon: FaRecycle, title: "Eco-Friendly", desc: "Amber glass bottle, fully recyclable packaging." },

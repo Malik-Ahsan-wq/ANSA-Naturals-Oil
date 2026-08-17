@@ -9,7 +9,7 @@ const values = [
   {
     icon: <FaLeaf className="text-zinc-700" size={24} />,
     title: "Radical Purity",
-    description: "Crafted with organic ingredients, nothing else. Our oil is bottled as nature intended."
+    description: "Crafted with organic ingredients, nothing else. Our organic hair oil is bottled as nature intended."
   },
   {
     icon: <FaSeedling className="text-zinc-700" size={24} />,

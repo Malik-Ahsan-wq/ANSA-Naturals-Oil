@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Leaf from "./Leaf";
 
-const PRODUCT_IMG = "/assets/ChatGPT_Image_Aug_5__2026__11_39_13_AM-removebg-preview.png";
+const PRODUCT_IMG = "/assets/ansanaturalsheroimage.png";
 
 export default function ProductBottle({ className }: { className?: string }) {
   return (
@@ -17,7 +17,7 @@ export default function ProductBottle({ className }: { className?: string }) {
       <div className="relative z-10 w-full max-w-[360px] mx-auto" style={{ aspectRatio: "408 / 612" }}>
         <Image
           src={PRODUCT_IMG}
-          alt="ANSA Naturals Pure Organic Oil with Organic Ingredients bottle"
+          alt="ANSA Naturals Pure Organic Hair Oil bottle"
           fill
           sizes="(max-width: 768px) 60vw, 30vw"
           priority

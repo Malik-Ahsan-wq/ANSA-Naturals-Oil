@@ -54,11 +54,7 @@ export default function Navbar() {
           {/* LOGO */}
           <Link href="/" className="group flex items-center">
             <div
-              className={`relative flex items-center rounded-xl overflow-hidden transition-all duration-300 ${
-                scrolled
-                  ? "bg-white shadow-sm border border-gray-200"
-                  : "bg-transparent"
-              }`}
+           
             >
               <Image
                 src={brand.logo}

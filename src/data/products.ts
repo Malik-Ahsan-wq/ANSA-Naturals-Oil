@@ -17,13 +17,13 @@ export type Product = {
 export const products: Product[] = [
   {
     id: "oil-01",
-    name: "Pure Organic Oil with Organic Ingredients",
+    name: "Pure Organic Hair Oil",
     slug: "pure-black-seed-oil",
     price: 3000,
     originalPrice: 4500,
     image: "/assets/ansa-logo.png",
     description:
-      "The flagship of ANSA Naturals — 100% pure, organic hair oil crafted with organic ingredients. A carefully blended formula of nourishing botanical oils and plant extracts, bottled in UV-protected glass to preserve natural potency for visibly stronger, shinier, more resilient hair.",
+      "The flagship of ANSA Naturals — 100% pure, organic hair oil. A carefully blended formula of nourishing botanical oils and plant extracts, bottled in UV-protected glass to preserve natural potency for visibly stronger, shinier, more resilient hair.",
     category: "Premium Natural Hair Oil",
     isVeg: true,
     available: true,
