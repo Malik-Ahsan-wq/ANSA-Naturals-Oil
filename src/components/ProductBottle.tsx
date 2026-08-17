@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Leaf from "./Leaf";
 
-const PRODUCT_IMG = "/assets/ansanaturalsheroimage.png";
+const PRODUCT_IMG = "assets/ansanaturalsheroimage.png";
 
 export default function ProductBottle({ className }: { className?: string }) {
   return (
