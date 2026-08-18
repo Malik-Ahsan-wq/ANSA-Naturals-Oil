@@ -66,29 +66,18 @@ export default function Navbar() {
           {/* DESKTOP NAV */}
           <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => {
-              const isSection = link.href.startsWith("#");
-
-              const href =
-                link.href === "/"
-                  ? "/"
-                  : isSection
-                  ? pathname === "/"
-                    ? link.href
-                    : `/${link.href}`
-                  : link.href;
-
-              const isActive = !isSection && pathname === link.href;
+              const isActive = pathname === link.href;
 
               return (
-                <a
+                <Link
                   key={link.label}
-                  href={href}
+                  href={link.href}
                   className={`relative text-sm font-semibold transition-colors duration-300 hover:text-[#111111] ${
                     isActive ? "text-[#111111] font-bold" : "text-zinc-600"
                   }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               );
             })}
           </nav>
@@ -144,27 +133,16 @@ export default function Navbar() {
           <div className="mt-1 mb-3 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
             <nav className="flex flex-col">
               {navLinks.map((link) => {
-                const isSection = link.href.startsWith("#");
-
-                const href =
-                  link.href === "/"
-                    ? "/"
-                    : isSection
-                    ? pathname === "/"
-                      ? link.href
-                      : `/${link.href}`
-                    : link.href;
-
                 return (
-                  <a
+                  <Link
                     key={link.label}
-                    href={href}
+                    href={link.href}
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-2 px-5 py-3.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-[#111111]"
                   >
                     <FaLeaf className="text-xs text-zinc-400" />
                     {link.label}
-                  </a>
+                  </Link>
                 );
               })}
 

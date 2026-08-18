@@ -13,9 +13,7 @@ import {
 import { products } from "@/data/products";
 import { brand } from "@/data/brand";
 import { useCart } from "@/context/CartContext";
-import ProductBottle from "@/components/ProductBottle";
 import Leaf from "@/components/Leaf";
-import OilDrop from "@/components/OilDrop";
 
 const product = products[0];
 
@@ -131,7 +129,17 @@ function Hero() {
   const { addToCart } = useCart();
 
   return (
-    <section className="relative overflow-hidden">
+    <>
+      {/* Banner Image */}
+      <div className="relative w-full">
+        <img
+          src="/assets/banner.png"
+          alt="ANSA Naturals Banner"
+          className="w-full h-auto object-cover"
+        />
+      </div>
+
+      <section className="relative overflow-hidden">
       {/* Nature background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#f5f5f5] via-[#fafafa] to-[#fafafa]" />
 
@@ -151,9 +159,6 @@ function Hero() {
 
       <div className="absolute -top-32 -right-32 w-[34rem] h-[34rem] rounded-full bg-zinc-200/40 blur-3xl" />
       <div className="absolute top-24 -left-40 w-[30rem] h-[30rem] rounded-full bg-amber-200/30 blur-3xl" />
-      <Leaf variant="a" className="absolute top-32 left-[8%] w-16 h-16 text-zinc-500/30 -rotate-12 hidden lg:block" />
-      <Leaf variant="b" className="absolute bottom-40 left-[14%] w-12 h-12 text-zinc-600/25 rotate-45 hidden lg:block" />
-      <Leaf variant="c" className="absolute top-52 right-[6%] w-14 h-14 text-zinc-400/25 rotate-12 hidden lg:block" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 pb-16 lg:pb-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
         {/* Left */}
@@ -216,7 +221,11 @@ function Hero() {
 
         {/* Right — product */}
         <div className="relative flex justify-center lg:justify-end">
-          <ProductBottle className="w-[70%] max-w-md mx-auto lg:mr-8" />
+          <img
+            src="/assets/WhatsApp Image 2026-08-17 at 11.13.19 PM.jpeg"
+            alt="ANSA Naturals Pure Organic Hair Oil bottle"
+            className="w-[70%] max-w-md mx-auto lg:mr-8 rounded-3xl object-contain"
+          />
         </div>
       </div>
 
@@ -225,13 +234,13 @@ function Hero() {
         <div className="marquee-track gap-12 text-sm font-bold uppercase tracking-widest text-zinc-500/70">
           {[...Array(2)].map((_, n) => (
             <div key={n} className="flex items-center gap-12 shrink-0">
-              <span className="flex items-center gap-2"><FaLeaf className="text-zinc-600" /> Cold-Pressed</span>
+              <span className="flex items-center gap-2"><FaLeaf className="text-zinc-600" /> Organic Oil</span>
               <span className="flex items-center gap-2"><FaSeedling className="text-zinc-600" /> 100% Organic</span>
               <span className="flex items-center gap-2"><FaFlask className="text-zinc-600" /> Lab-Tested</span>
               <span className="flex items-center gap-2"><FaShieldAlt className="text-zinc-600" /> Cruelty-Free</span>
               <span className="flex items-center gap-2"><FaRecycle className="text-zinc-600" /> Eco Packaging</span>
               <span className="flex items-center gap-2"><FaLeaf className="text-zinc-600" /> Non-GMO</span>
-              <span className="flex items-center gap-2"><FaLeaf className="text-zinc-600" /> Cold-Pressed</span>
+              <span className="flex items-center gap-2"><FaLeaf className="text-zinc-600" /> Organic-Oil</span>
               <span className="flex items-center gap-2"><FaSeedling className="text-zinc-600" /> 100% Organic</span>
               <span className="flex items-center gap-2"><FaFlask className="text-zinc-600" /> Lab-Tested</span>
               <span className="flex items-center gap-2"><FaShieldAlt className="text-zinc-600" /> Cruelty-Free</span>
@@ -242,6 +251,7 @@ function Hero() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
@@ -280,19 +290,12 @@ function About() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* Visual */}
         <div className="relative order-2 lg:order-1">
-          <div className="absolute -top-8 -left-8 w-40 h-40 rounded-full bg-zinc-100/60 blur-2xl" />
           <div className="relative mx-auto max-w-md">
-            <div className="aspect-[3/4] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#111111] via-[#333333] to-[#1a1a1a] p-6 sm:p-8 flex items-center justify-center animate-blob shadow-2xl shadow-zinc-900/30">
-              <ProductBottle className="w-[70%]" />
-            </div>
-            <div className="absolute -bottom-6 -right-4 sm:right-2 bg-white rounded-2xl shadow-xl border border-zinc-100 px-5 py-4 flex items-center gap-3 animate-float">
-              <OilDrop className="w-8 h-10 text-amber-500" />
-              <div>
-                <p className="text-lg font-bold text-[#111111]">100%</p>
-                <p className="text-xs text-zinc-500">Traceable Purity</p>
-              </div>
-            </div>
-        
+            <img
+              src="/assets/WhatsApp Image 2026-08-17 at 11.13.19 PM.jpeg"
+              alt="ANSA Naturals Pure Organic Hair Oil bottle"
+              className="w-full rounded-3xl object-contain"
+            />
           </div>
         </div>
 
@@ -346,7 +349,7 @@ function HairFallProblem() {
 
   return (
     <section className="relative py-20 lg:py-28 bg-[#111111] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#111111] via-[#1a1a1a] to-[#111111]" />
+      <div className="absolute inset-0 bg-linear-to-br from-[#111111] via-[#1a1a1a] to-[#111111]" />
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -710,9 +713,9 @@ export default function Home() {
       <Hero />
       <About />
       <HairFallProblem />
-      <Ingredients />
+      {/* <Ingredients /> */}
       <Reviews />
-      <Contact />
+      {/* <Contact /> */}
      
     </main>
   );

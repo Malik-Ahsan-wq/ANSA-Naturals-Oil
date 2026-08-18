@@ -160,13 +160,13 @@ export function orderPlacedEmail(order: EmailOrderInput, baseUrl: string): MailO
     .join("");
 
   const html = baseLayout({
-    preheader: `We've received your order ${orderNumber}. Your pure cold-pressed hair oil is on the way!`,
+    preheader: `We've received your order ${orderNumber}. Your pure Organic-Oil hair oil is on the way!`,
     heading: `Thank you, ${escapeHtml(order.customerName)}!`,
     eyebrow: `Order ${orderNumber} · ${fmtDate(order.createdAt)}`,
     baseUrl,
     body: `
       <p style="margin:0 0 16px 0;">
-        We've received your order. Our team is preparing your bottle of pure, cold-pressed
+        We've received your order. Our team is preparing your bottle of pure, Organic-Oil
         natural hair oil and it will ship from our studio within 24 hours.
       </p>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${CREAM}; border-radius:14px; padding:8px 0; margin-top:8px;">
@@ -326,7 +326,7 @@ export function newsletterEmail(to: string, baseUrl: string): MailOptions {
         about new arrivals, seasonal hair oil blends and exclusive offers for nourished, thriving hair.
       </p>
       <p style="margin:0; color:#3c443e;">
-        Meanwhile, explore our signature cold-pressed hair oil rituals to give your strands the love they deserve.
+        Meanwhile, explore our signature Organic-Oil hair oil rituals to give your strands the love they deserve.
       </p>
       <div style="margin-top:20px; text-align:center;">
         <a href="${baseUrl}/products" style="display:inline-block; background:${GREEN}; color:#ffffff; text-decoration:none; padding:14px 28px; border-radius:999px; font-size:14px; font-weight:700;">

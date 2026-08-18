@@ -19,7 +19,7 @@ export const brand = {
     { value: "30,000+", label: "Happy Customers" },
     { value: "4.9/5", label: "Average Rating" },
     { value: "100%", label: "Natural & Pure" },
-    { value: "4.6★", label: "Cold-Pressed" },
+    { value: "4.6★", label: "Organic-Oil" },
   ],
 };
 

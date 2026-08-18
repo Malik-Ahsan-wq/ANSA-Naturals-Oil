@@ -37,7 +37,7 @@ export default function ProductBottle({ className }: { className?: string }) {
       {/* Floating badges */}
       <div className="absolute -left-2 sm:-left-6 top-1/3 z-20 rounded-2xl bg-white/90 backdrop-blur px-3 py-2 shadow-lg border border-white/60 animate-float-slow">
         <p className="text-[10px] font-bold text-zinc-800 uppercase tracking-wide">100% Organic</p>
-        <p className="text-[8px] text-zinc-500">Cold-pressed · Unrefined</p>
+        <p className="text-[8px] text-zinc-500">Organic-Oil · Unrefined</p>
       </div>
     </div>
   );
