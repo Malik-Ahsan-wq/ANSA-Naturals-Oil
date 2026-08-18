@@ -433,44 +433,7 @@ function HairFallProblem() {
   );
 }
 
-/* ------------------------------- BENEFITS -------------------------------- */
-function Benefits() {
-  const benefits = [
-    { icon: FaLeaf, title: "Hair Growth", desc: "Massaging into the scalp helps stimulate roots and supports thicker, fuller-looking hair over time." },
-    { icon: FaHandHoldingHeart, title: "Root Strength", desc: "Rich in essential fatty acids that help reduce breakage, split ends and unwanted shedding." },
-    { icon: FaShieldAlt, title: "Scalp Balance", desc: "Naturally soothing and clarifying, it helps calm a flaky, irritated scalp and unclog follicles." },
-    { icon: FaFlask, title: "Glossy Shine", desc: "Seals the cuticle and restores mirror-like shine, softness and movement to dull strands." },
-    { icon: FaSeedling, title: "Dandruff Care", desc: "Traditionally used to reduce flakiness, itching and dryness for a healthy, comfortable scalp." },
-    { icon: FaRecycle, title: "Youthful Hair", desc: "Antioxidant-rich formula helps protect against heat, pollution and everyday styling damage." },
-  ];
-  return (
-    <section id="benefits" className="relative py-20 lg:py-28 bg-white">
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#fafafa] to-white" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="The Benefits"
-          title={<>One Oil, <span className="text-shimmer">Endless Hair Vitality</span></>}
-          sub="Nature's most concentrated hair oil, packed into every single golden drop."
-        />
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {benefits.map((b, i) => (
-            <div key={b.title}
-              className="group relative overflow-hidden rounded-3xl border border-zinc-100 bg-gradient-to-b from-white to-white p-7 hover:shadow-2xl hover:shadow-zinc-900/10 hover:-translate-y-1 transition-all duration-300">
-              <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-zinc-100/50 group-hover:scale-150 transition-transform duration-500" />
-              <div className="relative">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#111111] to-[#333333] text-white flex items-center justify-center mb-5 shadow-lg shadow-zinc-900/20 group-hover:rotate-6 transition-transform">
-                  <b.icon className="text-2xl" />
-                </div>
-                <h3 className="text-xl font-bold text-[#111111] mb-2.5">{b.title}</h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">{b.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+
 
 /* ------------------------------- INGREDIENTS ----------------------------- */
 function Ingredients() {
@@ -530,151 +493,9 @@ function Ingredients() {
   );
 }
 
-/* -------------------------------- HOW TO USE ----------------------------- */
-function HowToUse() {
-  const steps = [
-    { n: "01", t: "Massage the Scalp", d: "Warm a few drops and gently massage into the scalp with fingertips for 3–5 minutes to awaken follicles." },
-    { n: "02", t: "Work Through Strands", d: "Spread from roots to ends, focusing on dry, damaged areas. Leave in for 30 minutes to overnight." },
-    { n: "03", t: "Stay Consistent", d: "Rinse with a gentle shampoo. For best results, use 3–4 times a week for 8–12 weeks." },
-  ];
-  return (
-    <section className="relative py-20 lg:py-28 bg-[#fafafa] overflow-hidden">
 
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="How to Use"
-          title={<>Your Daily <span className="text-shimmer">Hair Ritual</span></>}
-          sub="Simple, three steps to welcome nature's most potent oil into your hair-care routine."
-        />
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {steps.map((s) => (
-            <div key={s.n}
-              className="relative rounded-3xl bg-white/80 backdrop-blur-sm border border-zinc-100 p-8 hover:shadow-2xl hover:shadow-zinc-900/10 transition-all duration-300 group">
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-4xl font-bold text-zinc-200 group-hover:text-zinc-300 transition-colors">{s.n}</span>
-                <OilDrop className="w-7 h-9 text-amber-500/70" />
-              </div>
-              <h3 className="text-xl font-bold text-[#111111] mb-3">{s.t}</h3>
-              <p className="text-sm text-zinc-500 leading-relaxed">{s.d}</p>
-            </div>
-          ))}
-        </div>
 
-        {/* Real Results — Before & After */}
-        <div className="mt-20">
-          <div className="text-center mb-10">
-            <p className="text-amber-500 font-bold text-xs uppercase tracking-[0.25em] mb-3">Real Results</p>
-            <h3 className="text-2xl sm:text-3xl font-bold text-[#111111]">
-              Before & After <span className="text-shimmer">Transformations</span>
-            </h3>
-            <p className="mt-3 text-sm text-zinc-500 max-w-lg mx-auto">
-               See the real difference our organic oil makes.
-              These are actual customer results after consistent use.
-            </p>
-          </div>
-
-          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-zinc-900/10 border border-zinc-100">
-            <Image
-              src="/assets/before-after-results.jpg"
-              alt="Before and after hair transformation results using ANSA Naturals organic oil"
-              width={1400}
-              height={900}
-              className="w-full h-auto"
-              priority
-            />
-            {/* Overlay label */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-6 sm:p-8">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="bg-amber-500 text-black text-xs font-bold px-3 py-1 rounded-full">VERIFIED RESULTS</span>
-                <span className="text-white text-sm font-medium">8–12 weeks of consistent use</span>
-              </div>
-              <p className="mt-2 text-white/80 text-xs">
-                Individual results may vary. Images are unedited customer submissions.
-              </p>
-            </div>
-          </div>
-
-          {/* Stats below image */}
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { v: "88%", l: "Reduced Hair Fall" },
-              { v: "92%", l: "Thicker Hair Growth" },
-              { v: "95%", l: "Scalp Health Improved" },
-              { v: "4.9/5", l: "Customer Rating" },
-            ].map((s) => (
-              <div key={s.l} className="text-center p-4 rounded-2xl bg-white border border-zinc-100 shadow-sm">
-                <p className="text-2xl font-bold text-[#111111]">{s.v}</p>
-                <p className="text-xs text-zinc-500 mt-1">{s.l}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------ WHY CHOOSE US ---------------------------- */
-function WhyChooseUs() {
-  const features = [
-    { icon: FaAward, title: "Premium Grade", desc: "Only the top 5% of harvested seeds make it into our bottles." },
-    { icon: FaFlask, title: "Lab Certified", desc: "Every batch is third-party tested for purity and potency." },
-    { icon: FaRecycle, title: "Sustainable", desc: "Eco-friendly glass packaging and responsibly farmed seeds." },
-    { icon: FaTruck, title: "Swift Delivery", desc: "Free nationwide shipping, beautifully packed, delivered fast." },
-    { icon: FaShieldAlt, title: "No Compromise", desc: "No fillers, no carrier blends, no heat damage. Ever." },
-    { icon: FaHandHoldingHeart, title: "Loved by 30k+", desc: "Thousands of glowing reviews from wellness-conscious families." },
-  ];
-  return (
-    <section id="why-us" className="relative py-20 lg:py-28 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Why Choose Us"
-          title={<>The ANSA <span className="text-shimmer">Difference</span></>}
-          sub="We obsess over the details so you can trust every drop."
-        />
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((f) => (
-            <div key={f.title}
-              className="flex gap-4 rounded-3xl border border-zinc-100 bg-white p-6 hover:border-zinc-300 hover:bg-zinc-50/50 transition-all duration-300 group">
-              <div className="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-[#111111] to-[#333333] text-white flex items-center justify-center shadow-md shadow-zinc-900/15 group-hover:scale-110 transition-transform">
-                <f.icon />
-              </div>
-              <div>
-                <h3 className="font-bold text-[#111111] mb-1.5">{f.title}</h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">{f.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Comparison */}
-        <div className="mt-16 max-w-3xl mx-auto">
-          <div className="rounded-3xl border border-zinc-100 bg-white overflow-hidden shadow-lg shadow-zinc-900/5">
-            <div className="grid grid-cols-3 text-center text-xs sm:text-sm font-bold py-4 bg-[#111111] text-white px-4">
-              <span className="text-left">Quality</span>
-              <span>ANSA Naturals</span>
-              <span className="text-zinc-300">Other Oils</span>
-            </div>
-            {[
-              ["Cold-Pressed Under 40°C", true, false],
-              ["100% Pure, No Fillers", true, false],
-              ["Lab Tested Purity", true, false],
-              ["Within 24h of Harvest", true, false],
-              ["Amber Glass Protection", true, false],
-            ].map(([label, us, them], i) => (
-              <div key={String(label)} className={`grid grid-cols-3 items-center text-center text-xs sm:text-sm py-4 px-4 ${i % 2 ? "bg-white" : "bg-zinc-50"}`}>
-                <span className="text-left font-semibold text-[#111111]">{label}</span>
-                <span className="flex justify-center">{us ? <FaCheckCircle className="text-zinc-700 text-lg" /> : <span className="text-zinc-300">—</span>}</span>
-                <span className="flex justify-center">{them ? <FaCheckCircle className="text-zinc-700 text-lg" /> : <span className="text-zinc-300">✕</span>}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* -------------------------------- REVIEWS -------------------------------- */
 function Reviews() {
@@ -775,51 +596,7 @@ function Reviews() {
   );
 }
 
-/* ---------------------------------- FAQ ----------------------------------- */
-function Faq() {
-  const faqs = [
-    { q: "Is the oil really 100% pure and natural?", a: "Yes. ANSA Naturals is crafted with organic ingredients, with absolutely no fillers, carrier oils, preservatives or heat processing. Every batch ships with a third-party lab purity certificate." },
-    { q: "What makes organic oils different?", a: "Most hair oils are heat-extracted or blended with cheap carriers, which destroys delicate nutrients. Our organic formula preserves natural nutrients at their full potency for healthier hair." },
-    { q: "How should I use it on my hair?", a: "Warm a few drops and massage into the scalp for 3–5 minutes, then work through strands from roots to ends. Leave in for 30 minutes to overnight, then rinse with a gentle shampoo. Repeat 3–4 times a week." },
-    { q: "Are there any side effects or allergies?", a: "Our oil is generally safe for most hair and skin types. If you have known seed allergies or a sensitive scalp, do a patch test before use and discontinue if irritation occurs." },
-    { q: "How long does one bottle last and how do I store it?", a: "One 100 ml bottle lasts roughly 6–8 weeks of regular hair use. Store in a cool, dry place away from direct sunlight — the amber glass bottle is designed to protect the oil." },
-    { q: "What is your delivery and return policy?", a: "We offer free nationwide delivery with dispatch within 24 hours. If you're not completely satisfied, contact us within 14 days for a hassle-free replacement or refund." },
-  ];
-  const [open, setOpen] = useState(0);
 
-  return (
-    <section id="faq" className="relative py-20 lg:py-28 bg-white">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="FAQs"
-          title={<>Questions, <span className="text-shimmer">Answered</span></>}
-          sub="Everything you need to know before welcoming ANSA into your hair-care routine."
-        />
-        <div className="mt-12 space-y-4">
-          {faqs.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={f.q}
-                className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? "border-zinc-300 bg-zinc-50/40 shadow-lg shadow-zinc-900/5" : "border-zinc-100 bg-white hover:border-zinc-200"}`}>
-                <button onClick={() => setOpen(isOpen ? -1 : i)} className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left">
-                  <span className="font-semibold text-[#111111] text-sm sm:text-base">{f.q}</span>
-                  <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? "bg-zinc-800 text-white rotate-180" : "bg-white border border-zinc-200 text-zinc-700"}`}>
-                    <FaChevronDown size={12} />
-                  </span>
-                </button>
-                <div className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-                  <div className="overflow-hidden">
-                    <p className="px-6 pb-5 text-sm text-zinc-600 leading-relaxed">{f.a}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* -------------------------------- CONTACT -------------------------------- */
 function Contact() {
@@ -924,44 +701,7 @@ function Contact() {
   );
 }
 
-/* ------------------------------ FINAL PRODUCT ----------------------------- */
-function FinalCta() {
-  const { addToCart } = useCart();
-  return (
-    <section className="relative py-20 lg:py-24 bg-[#fafafa] overflow-hidden">
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#111111] to-transparent" />
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#111111] via-[#333333] to-[#1a1a1a] p-8 sm:p-14 text-center shadow-2xl shadow-zinc-900/30">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-amber-300/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3" />
-          <Leaf variant="a" className="absolute -left-4 bottom-0 w-24 h-24 text-zinc-200/10 rotate-12" />
-          <OilDrop className="absolute right-10 top-8 w-8 h-10 text-amber-300/30" />
-          <div className="relative">
-            <p className="section-eyebrow flex items-center justify-center gap-2 mb-4"><span className="h-px w-8 bg-gold inline-block" />Limited Batch</p>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white leading-tight">
-              Begin Your Journey to <span className="text-[#e6c277] italic">Naturally Beautiful Hair</span>
-            </h2>
-            <p className="mt-5 text-zinc-100/80 max-w-xl mx-auto leading-relaxed">
-              Join 30,000+ customers who made the switch to pure, organic natural hair oil.
-              Your hair will thank you.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button onClick={() => addToCart(product, 1)}
-                className="inline-flex items-center gap-2 rounded-full bg-white text-zinc-800 px-9 py-4 text-sm font-bold shadow-xl hover:bg-amber-50 hover:-translate-y-0.5 transition-all active:scale-95">
-                <FaShoppingCart /> Order Now — {brand.currency} {product.price.toLocaleString()}
-              </button>
-              <Link href="#faq" className="inline-flex items-center gap-2 rounded-full border border-white/30 text-white px-9 py-4 text-sm font-bold hover:bg-white/10 transition-all active:scale-95">
-                Have Questions?
-              </Link>
-            </div>
-            <p className="mt-6 text-xs text-zinc-100/50 flex items-center justify-center gap-2">
-              <FaShieldAlt className="text-[#e6c277]" /> 14-day satisfaction guarantee · Free nationwide delivery
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+
 
 /* ---------------------------------- PAGE ---------------------------------- */
 export default function Home() {
@@ -970,14 +710,10 @@ export default function Home() {
       <Hero />
       <About />
       <HairFallProblem />
-      <Benefits />
       <Ingredients />
-      <HowToUse />
-      <WhyChooseUs />
       <Reviews />
-      <Faq />
       <Contact />
-      <FinalCta />
+     
     </main>
   );
 }

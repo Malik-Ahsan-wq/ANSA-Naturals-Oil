@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Leaf from "./Leaf";
 
-const PRODUCT_IMG = "/assets/ChatGPT_Image_Aug_17__2026__11_44_02_AM-removebg-preview.png";
+const PRODUCT_IMG = "/assets/WhatsApp Image 2026-08-17 at 11.13.19 PM.jpeg";
 
 export default function ProductBottle({ className }: { className?: string }) {
   return (
     <div className={`relative ${className ?? ""}`}>
       {/* Ambient glow */}
-      <div className="absolute inset-0 m-auto w-[78%] aspect-square rounded-full bg-gradient-to-br from-amber-200/40 via-amber-300/30 to-zinc-200/30 blur-3xl" />
+      <div className="absolute inset-0 m-auto w-[78%] aspect-square rounded-full bg-linear-to-br from-amber-200/40 via-amber-300/30 to-zinc-200/30 blur-3xl" />
 
       {/* Floating leaves */}
       <Leaf variant="a" className="absolute -top-4 -left-2 w-16 h-16 sm:w-20 sm:h-20 text-zinc-500/60 rotate-[-30deg] animate-float" />
@@ -21,7 +21,7 @@ export default function ProductBottle({ className }: { className?: string }) {
           fill
           sizes="(max-width: 768px) 60vw, 30vw"
           priority
-          className="object-contain drop-shadow-[0_35px_35px_rgba(20,60,40,0.35)]"
+          className="object-contain drop-shadow-[0_35px_35px_rgba(20,60,40,0.35)] border rounded-2xl"
         />
         {/* Ground shadow */}
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-3/5 h-5 rounded-full bg-zinc-900/20 blur-md" />

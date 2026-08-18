@@ -11,12 +11,7 @@ import { brand } from "@/data/brand";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "#about", label: "Our Story" },
-  { href: "#benefits", label: "Benefits" },
-  { href: "#why-us", label: "Why Us" },
-  { href: "#reviews", label: "Reviews" },
-  { href: "#faq", label: "FAQs" },
-  { href: "#contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
