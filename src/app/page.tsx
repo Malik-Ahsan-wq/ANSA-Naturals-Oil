@@ -132,9 +132,15 @@ function Hero() {
     <>
       {/* Banner Image */}
       <div className="relative w-full">
-        <img
+        <Image
           src="/assets/banner.png"
-          alt="ANSA Naturals Banner"
+          alt="ANSA Naturals - Pure Organic Hair Oil"
+          width={1920}
+          height={600}
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          quality={85}
           className="w-full h-auto object-cover"
         />
       </div>
@@ -221,9 +227,14 @@ function Hero() {
 
         {/* Right — product */}
         <div className="relative flex justify-center lg:justify-end">
-          <img
+          <Image
             src="/assets/WhatsApp Image 2026-08-17 at 11.13.19 PM.jpeg"
             alt="ANSA Naturals Pure Organic Hair Oil bottle"
+            width={400}
+            height={600}
+            priority
+            sizes="(max-width: 768px) 70vw, 35vw"
+            quality={85}
             className="w-[70%] max-w-md mx-auto lg:mr-8 rounded-3xl object-contain"
           />
         </div>
@@ -291,9 +302,14 @@ function About() {
         {/* Visual */}
         <div className="relative order-2 lg:order-1">
           <div className="relative mx-auto max-w-md">
-            <img
+            <Image
               src="/assets/WhatsApp Image 2026-08-17 at 11.13.19 PM.jpeg"
               alt="ANSA Naturals Pure Organic Hair Oil bottle"
+              width={400}
+              height={600}
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={80}
               className="w-full rounded-3xl object-contain"
             />
           </div>

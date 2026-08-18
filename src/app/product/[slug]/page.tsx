@@ -1,19 +1,39 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { products } from "@/data/products";
 import QuantitySelector from "@/components/QuantitySelector";
 import { brand } from "@/data/brand";
 import { FaLeaf, FaTruck, FaShieldAlt, FaRecycle, FaStar } from "react-icons/fa";
-import ProductBottle from "@/components/ProductBottle";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const product = products.find((p) => p.slug === slug);
+  if (!product) return { title: brand.name };
+
   return {
-    title: product ? `${product.name} — ${brand.name}` : brand.name,
-    description: product?.description ?? brand.description,
+    title: `${product.name} — ${brand.name}`,
+    description: product.description,
+    openGraph: {
+      title: `${product.name} — ${brand.name}`,
+      description: product.description,
+      images: [
+        {
+          url: "/assets/WhatsApp Image 2026-08-17 at 11.13.19 PM.jpeg",
+          width: 800,
+          height: 1200,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} — ${brand.name}`,
+      description: product.description,
+      images: ["/assets/WhatsApp Image 2026-08-17 at 11.13.19 PM.jpeg"],
+    },
   };
 }
 
@@ -43,7 +63,16 @@ export default async function ProductDetail({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Visual */}
           <div className="relative rounded-[2rem] bg-gradient-to-b from-[#f5f5f5] to-[#fafafa] border border-zinc-100 p-8 sm:p-12 flex items-center justify-center shadow-inner">
-            <ProductBottle className="w-[80%] max-w-md" />
+            <Image
+              src="/assets/WhatsApp Image 2026-08-17 at 11.13.19 PM.jpeg"
+              alt={product.name}
+              width={400}
+              height={600}
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={85}
+              className="w-[80%] max-w-md rounded-3xl object-contain"
+            />
           </div>
 
           {/* Details */}
