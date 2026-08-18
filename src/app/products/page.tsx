@@ -5,8 +5,6 @@ import { products } from "@/data/products";
 import { brand } from "@/data/brand";
 import { useCart } from "@/context/CartContext";
 import { FaShoppingCart, FaPlus, FaMinus, FaLeaf, FaStar, FaTruck, FaShieldAlt, FaRecycle } from "react-icons/fa";
-import ProductBottle from "@/components/ProductBottle";
-import Leaf from "@/components/Leaf";
 
 const product = products[0];
 
@@ -25,8 +23,6 @@ export default function ShopPage() {
     <main className="min-h-screen bg-[#fafafa] overflow-x-hidden">
       {/* Hero banner */}
       <section className="relative pt-24 lg:pt-28 pb-10 overflow-hidden bg-gradient-to-b from-[#f5f5f5] to-[#fafafa]">
-        <Leaf variant="a" className="absolute top-24 right-[10%] w-20 h-20 text-zinc-400/20 rotate-12 hidden lg:block" />
-        <Leaf variant="b" className="absolute bottom-6 left-[6%] w-16 h-16 text-zinc-500/20 -rotate-12 hidden lg:block" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="section-eyebrow flex items-center justify-center gap-2 mb-3"><span className="h-px w-8 bg-gold inline-block" />The Flagship Product<span className="h-px w-8 bg-gold inline-block" /></p>
           <h1 className="text-3xl sm:text-5xl font-bold text-center text-[#111111]">One Oil. One Promise. <span className="text-shimmer italic">Purity.</span></h1>
@@ -39,7 +35,11 @@ export default function ShopPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center bg-white rounded-[2rem] border border-zinc-100 shadow-xl shadow-zinc-900/5 overflow-hidden">
           {/* Visual */}
           <div className="relative bg-gradient-to-b from-[#f5f5f5] to-[#fafafa] p-8 sm:p-12 flex items-center justify-center">
-            <ProductBottle className="w-[70%] max-w-sm" />
+            <img
+              src="/assets/WhatsApp Image 2026-08-17 at 11.13.19 PM.jpeg"
+              alt="ANSA Naturals Pure Organic Hair Oil bottle"
+              className="w-[70%] max-w-sm rounded-3xl object-contain"
+            />
             <div className="absolute top-6 left-6 rounded-full bg-gradient-to-r from-[#111111] to-[#333333] text-white text-xs font-bold px-4 py-1.5 shadow-lg">
               Best Seller
             </div>

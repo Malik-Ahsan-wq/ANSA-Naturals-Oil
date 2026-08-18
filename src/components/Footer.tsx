@@ -74,12 +74,9 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Explore</h4>
             <ul className="space-y-3.5">
               {[
-                { label: "Our Story", href: "#about" },
-                { label: "Benefits", href: "#benefits" },
-                { label: "Ingredients", href: "#ingredients" },
-                { label: "Reviews", href: "#reviews" },
-                { label: "FAQs", href: "#faq" },
-                { label: "Contact", href: "#contact" },
+                { label: "Home", href: "/" },
+            
+                { label: "Contact", href: "/contact" },
               ].map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className="text-sm hover:text-[#e6c277] transition-colors flex items-center gap-2 group">
