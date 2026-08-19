@@ -53,7 +53,7 @@ export default function ContactPage() {
             {[
               { icon: FaWhatsapp, label: "WhatsApp", value: brand.phone },
               { icon: FaEnvelope, label: "Email", value: brand.email },
-              { icon: FaMapMarkerAlt, label: "Headquarters", value: "Lahore, Pakistan · Shipping nationwide" },
+              { icon: FaMapMarkerAlt, label: "Headquarters", value: "Faisalabad, Pakistan · Shipping nationwide" },
             ].map((c) => (
               <div key={c.label} className="flex items-center gap-4">
                 <div className="w-11 h-11 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-[#e6c277]">

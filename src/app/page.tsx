@@ -172,7 +172,7 @@ function Hero() {
           <div className="inline-flex items-center gap-2 rounded-full bg-white/70 border border-zinc-200 px-4 py-1.5 shadow-sm mb-6">
             <FaLeaf className="text-zinc-700" />
             <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-zinc-800">
-              100% Pure · Lab-Tested · Organic
+              100% Pure · Organic
             </span>
           </div>
 
@@ -183,7 +183,7 @@ function Hero() {
 
           <p className="mt-5 text-base sm:text-lg text-zinc-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
             Crafted with organic ingredients and bottled in
-            UV-protected glass — {brand.tagline.toLowerCase()} nourishes roots and
+          {brand.tagline.toLowerCase()} nourishes roots and
             revives shine without heat damage or harsh chemicals.
           </p>
 
@@ -247,13 +247,11 @@ function Hero() {
             <div key={n} className="flex items-center gap-12 shrink-0">
               <span className="flex items-center gap-2"><FaLeaf className="text-zinc-600" /> Organic Oil</span>
               <span className="flex items-center gap-2"><FaSeedling className="text-zinc-600" /> 100% Organic</span>
-              <span className="flex items-center gap-2"><FaFlask className="text-zinc-600" /> Lab-Tested</span>
               <span className="flex items-center gap-2"><FaShieldAlt className="text-zinc-600" /> Cruelty-Free</span>
               <span className="flex items-center gap-2"><FaRecycle className="text-zinc-600" /> Eco Packaging</span>
               <span className="flex items-center gap-2"><FaLeaf className="text-zinc-600" /> Non-GMO</span>
               <span className="flex items-center gap-2"><FaLeaf className="text-zinc-600" /> Organic-Oil</span>
               <span className="flex items-center gap-2"><FaSeedling className="text-zinc-600" /> 100% Organic</span>
-              <span className="flex items-center gap-2"><FaFlask className="text-zinc-600" /> Lab-Tested</span>
               <span className="flex items-center gap-2"><FaShieldAlt className="text-zinc-600" /> Cruelty-Free</span>
               <span className="flex items-center gap-2"><FaRecycle className="text-zinc-600" /> Eco Packaging</span>
               <span className="flex items-center gap-2"><FaLeaf className="text-zinc-600" /> Non-GMO</span>
@@ -325,14 +323,14 @@ function About() {
          Nature has always offered powerful ingredients for healthy, beautiful hair — from nourishing botanical oils to carefully selected herbs and plant extracts. At ANSA Naturals, we bring these natural elements together with modern care, creating a hair oil focused on nourishment, strength and scalp wellness. Every bottle reflects our commitment to quality, purity and thoughtfully sourced ingredients.
 
           </p>
-          <ul className="mt-7 space-y-3.5">
+          {/* <ul className="mt-7 space-y-3.5">
             {points.map((p) => (
               <li key={p} className="flex items-start gap-3 text-sm sm:text-base text-zinc-700">
                 <FaCheckCircle className="text-zinc-600 mt-0.5 shrink-0" />
                 {p}
               </li>
             ))}
-          </ul>
+          </ul> */}
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="#why-us" className="inline-flex items-center gap-2 rounded-full bg-[#111111] text-white px-7 py-3.5 text-sm font-bold hover:bg-[#333333] transition-all shadow-lg active:scale-95">
               Why Choose Us <FaArrowRight />
@@ -443,7 +441,7 @@ function HairFallProblem() {
 
             {/* Trust */}
             <p className="mt-6 text-xs text-zinc-500 flex items-center gap-2">
-              <FaShieldAlt className="text-amber-500" /> 100% Organic · Lab-Tested · 30,000+ Happy Customers
+              <FaShieldAlt className="text-amber-500" /> 100% Organic . Multiple Happy Customers
             </p>
           </div>
         </div>

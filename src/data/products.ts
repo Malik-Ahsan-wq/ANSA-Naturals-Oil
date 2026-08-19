@@ -23,7 +23,7 @@ export const products: Product[] = [
     originalPrice: 4500,
     image: "/assets/ansa-logo.png",
     description:
-      "The flagship of ANSA Naturals — 100% pure, organic hair oil. A carefully blended formula of nourishing botanical oils and plant extracts, bottled in UV-protected glass to preserve natural potency for visibly stronger, shinier, more resilient hair.",
+      "The flagship of ANSA Naturals — 100% pure, organic hair oil. A carefully blended formula of nourishing botanical oils and plant extracts, bottled  to preserve natural potency for visibly stronger, shinier, more resilient hair.",
     category: "Premium Natural Hair Oil",
     isVeg: true,
     available: true,
