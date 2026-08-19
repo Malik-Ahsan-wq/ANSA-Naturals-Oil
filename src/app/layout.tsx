@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 import CartSidebar from "@/components/CartSidebar";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { brand } from "@/data/brand";
 import { products } from "@/data/products";
 
@@ -180,6 +181,7 @@ export default function RootLayout({
           <div className="pt-16">{children}</div>
           <Footer />
           <CartSidebar />
+          <WhatsAppButton />
         </CartProvider>
       </body>
     </html>

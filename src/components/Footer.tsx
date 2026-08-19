@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { FaInstagram, FaFacebook, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaLeaf, FaTiktok } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaLeaf, FaTiktok } from "react-icons/fa";
 import { brand, whatsappLink } from "@/data/brand";
 
 export default function Footer() {
@@ -54,19 +54,7 @@ export default function Footer() {
               Pure, organic natural hair oil crafted with care — nature&apos;s most
               potent elixir for stronger, shinier, healthier-looking hair.
             </p>
-            <div className="flex items-center gap-3">
-              {[
-                { icon: FaInstagram, href: brand.social.instagram, label: "Instagram" },
-                { icon: FaFacebook, href: brand.social.facebook, label: "Facebook" },
-                { icon: FaTiktok, href: brand.social.tiktok, label: "TikTok" },
-                { icon: FaWhatsapp, href: whatsappLink("Hello ANSA Naturals!"), label: "WhatsApp" },
-              ].map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-100/80 hover:bg-zinc-600 hover:border-zinc-600 hover:text-white transition-all">
-                  <s.icon className="text-lg" />
-                </a>
-              ))}
-            </div>
+      
           </div>
 
           {/* Explore */}
