@@ -131,7 +131,7 @@ function Hero() {
   return (
     <>
       {/* Banner Image */}
-      <div className="relative w-full">
+      <div className="relative w-full ">
         <Image
           src="/assets/banner.png"
           alt="ANSA Naturals - Pure Organic Hair Oil"
@@ -141,7 +141,7 @@ function Hero() {
           fetchPriority="high"
           sizes="100vw"
           quality={85}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto hidden md:block object-cover"
         />
       </div>
 
